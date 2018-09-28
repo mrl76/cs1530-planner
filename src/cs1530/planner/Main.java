@@ -1,4 +1,4 @@
-package sample;
+package cs1530.planner;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
