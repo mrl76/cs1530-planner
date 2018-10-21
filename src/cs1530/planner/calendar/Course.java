@@ -14,9 +14,7 @@ public class Course {
 	}
 	
 	public Course(String name) {
-		this.name = name;
-		this.description = "";
-		this.timetable = new Timetable(Utils.now());
+		this(name, "", new Timetable(Utils.now()));
 	}
 	
 	public String getName() {
