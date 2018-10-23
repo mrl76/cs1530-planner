@@ -1,20 +1,21 @@
 package cs1530.planner.calendar.event;
 
-import cs1530.planner.calendar.time.Timetable;
 import cs1530.planner.util.Utils;
 
-public abstract class Event {
+import java.util.Date;
+
+public abstract class Event implements Comparable<Event> {
 	private String name, description;
-	private Timetable timetable;
+	private Date date;
 	
-	public Event(String name, String description, Timetable timetable) {
+	public Event(String name, String description, Date date) {
 		this.name = name;
 		this.description = description;
-		this.timetable = timetable;
+		this.date = date;
 	}
 	
 	public Event(String name) {
-		this(name, "", new Timetable(Utils.now()));
+		this(name, "", Utils.now());
 	}
 	
 	public String getName() {
@@ -33,11 +34,16 @@ public abstract class Event {
 		this.description = description;
 	}
 	
-	public Timetable getTimetable() {
-		return timetable;
+	public Date getDate() {
+		return date;
 	}
 	
-	public void setTimetable(Timetable timetable) {
-		this.timetable = timetable;
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	@Override
+	public int compareTo(Event o) {
+		return (int) (o.date.getTime() - date.getTime());
 	}
 }
