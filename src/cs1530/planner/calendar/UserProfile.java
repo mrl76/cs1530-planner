@@ -1,24 +1,20 @@
 package cs1530.planner.calendar;
 
-import cs1530.planner.calendar.Calendar;
-
-
-//User profile class for holdinng username password and calendar
-public class UserProfile{
-	
+//User profile class for holding username password and calendar
+public class UserProfile {
 	private String username;
 	private String password;
 	private Calendar calendar;
 	
-	//cpnstructor
-	public UserProfile(String name, String pw){
+	//constructor
+	public UserProfile(String name, String password){
 		this.username = name;
-		this.password = pw;
+		this.password = password;
 		this.calendar = new Calendar();
 	}
 	
 	//constructor
-	public UserProfile(String name, String pw, Calendar cal){
+	public UserProfile(String name, String password, Calendar cal){
 		this.username = name;
 		this.password = password;
 		this.calendar = cal;
@@ -35,7 +31,7 @@ public class UserProfile{
 	}
 	
 	//used to verify password for login
-	public boolean veriifyPassword(String attempt){
+	public boolean verifyPassword(String attempt){
 		if(attempt.equals(password)){
 			return true;
 		}else{
@@ -57,15 +53,27 @@ public class UserProfile{
 		this.username = newName;
 	}
 	
-	//verifys old password then resets it to new password
+	//verifies old password then resets it to new password
 	//returns true on success false on failure
 	public boolean resetPassword(String newPassword, String oldPassword){
-		if(veriifyPassword(oldPassword)){
+		if(verifyPassword(oldPassword)){
 			this.password = newPassword;
 			return true;
 		}else{
 			return false;
 		}
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof UserProfile)
+			return username.equals(((UserProfile) obj).username);
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return username.hashCode();
 	}
 	
 	//WILL NEED MORE METHODS PROBABLY AS SOON AS CALENDAR IS COMPLETED OR I MAY BE WRONG DEPENDING ON HOW THATS STRUCTURE

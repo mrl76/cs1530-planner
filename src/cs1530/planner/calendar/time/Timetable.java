@@ -25,6 +25,11 @@ public class Timetable {
 		Arrays.fill(days, true);
 	}
 	
+	public String toString() {
+		//TODO used for file saving
+		return null;
+	}
+	
 	public Interval getInterval() {
 		return interval;
 	}

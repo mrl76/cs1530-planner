@@ -2,7 +2,7 @@ package cs1530.planner.calendar.event;
 
 import cs1530.planner.calendar.Course;
 
-public class Assignment extends Event {
+public class Assignment extends Appointment {
 	private Course course;
 	
 	public Assignment(String name, Course course) {
