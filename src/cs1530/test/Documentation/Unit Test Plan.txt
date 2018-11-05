@@ -94,7 +94,7 @@ test class
    POSTCONDITIONS:  The method shall return the correct date object that is held within the 
                     Event object
 
-8) IDENTIFIER:      case-set-date-correct-format
+8) IDENTIFIER:      case-set-date
    DESCRIPTION:     This test verifies that when the setDate() method is called, the date 
                     variable within the Event object from where the method was called changes
                     to the passed in date
@@ -106,13 +106,18 @@ test class
 
 9) IDENTIFIER:      case-compare-to-greater
    DESCRIPTION:     This test verifies that when an event with a later date object is passed 
-                    into 
-   PRECONDITIONS:   
-   EXECUTION STEPS: 
-   POSTCONDITIONS:  
+                    into the compareTo() function, a positive integer is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The compareTo() method should return a positive integer that coresponds
+                    to the difference between the two dates
 
-10) IDENTIFIER:      case-compare-to-less
-    DESCRIPTION:
-    PRECONDITIONS:
-    EXECUTION STEPS:
-    POSTCONDITIONS:
+10)IDENTIFIER:      case-compare-to-less
+   DESCRIPTION:     This test verifies that when an event with a later date object is passed 
+                    into the compareTo() function, a negative integer is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The compareTo() method should return a negative integer that coresponds
+                    to the difference between the two dates
