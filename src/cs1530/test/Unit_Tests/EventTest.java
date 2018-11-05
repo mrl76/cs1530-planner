@@ -8,9 +8,9 @@ import java.util.Date;
 public class EventTest{
     private TestEvent testEvent;
 
-    //case-full-constructor-happy-path
+    //case-event-full-constructor
     @Test
-    public void testFullConstructorHappyPath()
+    public void testFullConstructor()
     {
         Date mockDate = Mokito.Mock(Date.class);
         testEvent = new TestEvent("testName", "testDescription", mockDate);
@@ -19,9 +19,9 @@ public class EventTest{
         assertSame(testEvent.getDate(), mockDate);
     }
 
-    //case-short-constructor-happy-path
+    //case-event-short-constructor
     @Test
-    public void testShortConstructorHappyPath()
+    public void testShortConstructor()
     {
         testEvent = new TestEvent("testName");
         assertTrue(testEvent.getName().equals("testName"));
@@ -29,7 +29,7 @@ public class EventTest{
         //Im not sure how to test the date object due to it being time dependant
     }
 
-    //case-get-name
+    //case-event-get-name
     @Test
     public void testGetName()
     {
@@ -37,7 +37,7 @@ public class EventTest{
         assertTrue(testEvent.getName().equals("testName"));
     }
 
-    //case-set-name
+    //case-event-set-name
     @Test
     public void testSetName()
     {
@@ -46,7 +46,7 @@ public class EventTest{
         assertTrue(testEvent.getName().equals("newName"));
     }
 
-    //case-get-description
+    //case-event-get-description
     @Test
     public void testGetDescription()
     {
@@ -55,7 +55,7 @@ public class EventTest{
         assertTrue(testEvent.getDescirption().equals("testDescription"));
     }
 
-    //case-set-description
+    //case-event-set-description
     @Test
     public void testSetDescription()
     {
@@ -65,7 +65,7 @@ public class EventTest{
         assertTrue(testEvent.getDescirption().equals("newDescription"));
     }
 
-    //case-get-date
+    //case-event-get-date
     @Test
     public void testGetDate()
     {
@@ -74,7 +74,7 @@ public class EventTest{
         assertSame(testEvent.getDate(), mockDate);
     }
 
-    //case-set-date
+    //case-event-set-date
     @Test
     public void testSetDate()
     {
@@ -86,7 +86,7 @@ public class EventTest{
         assertSame(testEvent.getDate(), newDate);
     }
 
-    //case-compare-to-greater
+    //case-event-compare-to-greater
     @Test
     public void testCompareToGreater()
     {
@@ -98,7 +98,7 @@ public class EventTest{
         assertTrue(smallEvent.compareTo(largeEvent) > 0);
     }
 
-    //case-compare-to-less
+    //case-event-compare-to-less
     @Test
     public void testCompareToLess()
     {
