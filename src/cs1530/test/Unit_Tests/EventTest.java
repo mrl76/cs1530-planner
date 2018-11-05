@@ -1,8 +1,9 @@
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import org.mockito.*;
+
 import java.util.concurrent.TimeUnit;
-import cs1530.planner.calendar.event.*;
+import java.util.Date;
 
 public class EventTest{
     private TestEvent testEvent;
@@ -99,7 +100,7 @@ public class EventTest{
 
     //case-compare-to-less
     @Test
-    public void testCompareToGreater()
+    public void testCompareToLess()
     {
         Date startDate = new Date();
         TimeUnit.SECONDS.sleep(1);
@@ -112,5 +113,14 @@ public class EventTest{
 
 //test class so that we can access Event methods
 //from the abstract class
-class TestEvent extends Event{   
+class TestEvent extends Event{
+    public TestEvent(String name, String description, Date date)
+    {
+        super(name, description, date);
+    }
+    
+    public TestEvent(String name)
+    {
+        super(name);
+    }
 }

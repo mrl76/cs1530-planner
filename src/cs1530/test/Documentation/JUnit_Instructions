@@ -6,7 +6,7 @@ junit-4.12.jar
 mockito-core-2.23.2.jar (used for mocks and stubs)
 
 Use the following command to compile test files:
-javac -classpath .\junit-4.12.jar;.\hamcrest-core-1.3.jar <TestFile.java> <FileToTest.java>
+javac -classpath .\junit-4.12.jar;.\hamcrest-core-1.3.jar;./mockito-core-1.10.19.jar <TestFile.java> <FileToTest.java>
 -replace <text> with the specified files
 
 Run the tests using the following command after compilation:
