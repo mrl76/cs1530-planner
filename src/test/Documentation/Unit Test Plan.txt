@@ -58,13 +58,14 @@ test class
                     was called
 
 4) IDENTIFIER:      case-set-name
-   DESCRIPTION:     This test verifies that the name field of the Event object from which the method
-                    was called from is updated to the new passed in name when this method is called
+   DESCRIPTION:     This test verifies that the name field of the Event object from which 
+                    the method was called from is updated to the new passed in name when 
+                    this method is called
    PRECONDTIONS:    This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Event class
-   POSTCONDITIONS:  The name variable of the Event object that called the method should be updated to
-                    to the new name
+   POSTCONDITIONS:  The name variable of the Event object that called the method should 
+                    be updated to the new name
 
 5) IDENTIFIER:      case-get-description
    DESCRIPTION:     This test verifies that the description of the Event object is returned
@@ -72,10 +73,46 @@ test class
    PRECONDTIONS:    This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Event class
-   POSTCONDITIONS:  The method should return the description of the Event object when it is called
+   POSTCONDITIONS:  The method should return the description of the Event object when it is 
+                    called
 
-6) IDENTIFIER:
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+6) IDENTIFIER:      case-set-description
+   DESCRIPTION:     This test verifies that the description of the Event object from where
+                    this method is called is changed to the passed in description
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The decription variable of the Event object from which this method is
+                    called whould be changed to the passed in description
+
+7) IDENTIFIER:      case-get-date
+   DESCRIPTION:     This test verifies that the correct date is returned when the getDate()
+                    method is called
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The method shall return the correct date object that is held within the 
+                    Event object
+
+8) IDENTIFIER:      case-set-date-correct-format
+   DESCRIPTION:     This test verifies that when the setDate() method is called, the date 
+                    variable within the Event object from where the method was called changes
+                    to the passed in date
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The date variable with in the Event object from with the method was called
+                    should be equal to the date that was passed in as an arguement
+
+9) IDENTIFIER:      case-compare-to-greater
+   DESCRIPTION:     This test verifies that when an event with a later date object is passed 
+                    into 
+   PRECONDITIONS:   
+   EXECUTION STEPS: 
+   POSTCONDITIONS:  
+
+10) IDENTIFIER:      case-compare-to-less
+    DESCRIPTION:
+    PRECONDITIONS:
+    EXECUTION STEPS:
+    POSTCONDITIONS:
