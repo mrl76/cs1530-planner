@@ -1,7 +1,8 @@
+package cs1530.test.Unit_Tests;
+
+import cs1530.planner.calendar.event.Event;
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.mockito.*;
-
 import java.util.concurrent.TimeUnit;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ public class EventTest{
     @Test
     public void testFullConstructor()
     {
-        Date mockDate = Mokito.Mock(Date.class);
+        Date mockDate = new Date();
         testEvent = new TestEvent("testName", "testDescription", mockDate);
         assertTrue(testEvent.getName().equals("testName"));
         assertTrue(testEvent.getDescription().equals("testDescription"));
@@ -25,7 +26,7 @@ public class EventTest{
     {
         testEvent = new TestEvent("testName");
         assertTrue(testEvent.getName().equals("testName"));
-        assertTrue(testEvent.getDescirption().equals(""));
+        assertTrue(testEvent.getDescription().equals(""));
         //Im not sure how to test the date object due to it being time dependant
     }
 
@@ -50,26 +51,26 @@ public class EventTest{
     @Test
     public void testGetDescription()
     {
-        Date mockDate = Mokito.Mock(Date.class);
-        testEvent = new TestEvent("testName", "testDescritption", mockDate);
-        assertTrue(testEvent.getDescirption().equals("testDescription"));
+        Date mockDate = new Date();
+        testEvent = new TestEvent("testName", "testDescription", mockDate);
+        assertTrue(testEvent.getDescription().equals("testDescription"));
     }
 
     //case-event-set-description
     @Test
     public void testSetDescription()
     {
-        Date mockDate = Mokito.Mock(Date.class);
-        testEvent = new TestEvent("testName", "testDescritption", mockDate);
+        Date mockDate = new Date();
+        testEvent = new TestEvent("testName", "testDescription", mockDate);
         testEvent.setDescription("newDescription");
-        assertTrue(testEvent.getDescirption().equals("newDescription"));
+        assertTrue(testEvent.getDescription().equals("newDescription"));
     }
 
     //case-event-get-date
     @Test
     public void testGetDate()
     {
-        Date mockDate = Mokito.Mock(Date.class);
+        Date mockDate = new Date();
         testEvent = new TestEvent("testName", "testDescritption", mockDate);
         assertSame(testEvent.getDate(), mockDate);
     }
@@ -79,7 +80,11 @@ public class EventTest{
     public void testSetDate()
     {
         Date startDate = new Date();
-        TimeUnit.SECONDS.sleep(1);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Date newDate = new Date();
         testEvent = new TestEvent("testName", "testDescription", startDate);
         testEvent.setDate(newDate);
@@ -91,10 +96,14 @@ public class EventTest{
     public void testCompareToGreater()
     {
         Date startDate = new Date();
-        TimeUnit.SECONDS.sleep(1);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Date endDate = new Date();
-        smallEvent = new TestEvent("smallEvent", "testDescription", startDate);
-        largeEvent = new TestEvent("largeEvent" , "testDescription", endDate);
+        TestEvent smallEvent = new TestEvent("smallEvent", "testDescription", startDate);
+        TestEvent largeEvent = new TestEvent("largeEvent" , "testDescription", endDate);
         assertTrue(smallEvent.compareTo(largeEvent) > 0);
     }
 
@@ -103,17 +112,21 @@ public class EventTest{
     public void testCompareToLess()
     {
         Date startDate = new Date();
-        TimeUnit.SECONDS.sleep(1);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Date endDate = new Date();
-        smallEvent = new TestEvent("smallEvent", "testDescription", startDate);
-        largeEvent = new TestEvent("largeEvent" , "testDescription", endDate);
+        TestEvent smallEvent = new TestEvent("smallEvent", "testDescription", startDate);
+        TestEvent largeEvent = new TestEvent("largeEvent" , "testDescription", endDate);
         assertTrue(largeEvent.compareTo(smallEvent) < 0);
     }
 }
 
 //test class so that we can access Event methods
 //from the abstract class
-class TestEvent extends Event{
+class TestEvent extends Event {
     public TestEvent(String name, String description, Date date)
     {
         super(name, description, date);
