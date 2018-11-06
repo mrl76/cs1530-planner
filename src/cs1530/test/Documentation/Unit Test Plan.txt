@@ -1,0 +1,183 @@
+Test Plan for Unit Tests
+Michael Long
+Created: 11/1/2018
+Last Updated: 11/5/2018
+
+Classes to test:
+-Event.java
+-Exam.java
+-Assignment.java
+-Appointment.java
+-Timetable.java
+-Calendar.java
+-Course.java
+
+Note: Interval.java was excluded from unit testing due to it only holding an enum object (11/1/2018)
+----------------------------------------------------------------------------------------------------
+Event.java
+
+Methods:
+public Event(String name, String description, Date date)
+public Event(String name)
+public String getName()
+public void setName(String name)
+public String getDescription()
+public void setDescription(String description)
+public Date getDate()
+public void setDate(Date date)
+public int compareTo(Event o)
+
+Because this an abstract class I may need to extend it for a
+test class
+
+1) IDENTIFIER:      case-event-full-constructor
+   DESCRIPTION:     This test verifies that the full constructor method of the Event class
+                    properly instatiates an Event object based on the passed in arguements
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The test should verify that a new Event object has been created 
+                    using the correct passed in arguements 
+
+2) IDENTIFIER:      case-event-short-constructor
+   DESCRIPTION:     This test verifies that the short constructor method of the Event class
+                    properly instatiates an Event object based on the passed in name
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The test should verify that a new Event object has been created 
+                    using the correct passed in name, while the other feilds should
+                    be undefined
+
+3) IDENTIFIER:      case-event-get-name
+   DESCRIPTION:     This test verifies that the getName() function of the Event class 
+                    will return the correct name varibale associated with the object
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  This method should return the name of the Event object from which it
+                    was called
+
+4) IDENTIFIER:      case-event-set-name
+   DESCRIPTION:     This test verifies that the name field of the Event object from which 
+                    the method was called from is updated to the new passed in name when 
+                    this method is called
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The name variable of the Event object that called the method should 
+                    be updated to the new name
+
+5) IDENTIFIER:      case-event-get-description
+   DESCRIPTION:     This test verifies that the description of the Event object is returned
+                    when this method is called
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The method should return the description of the Event object when it is 
+                    called
+
+6) IDENTIFIER:      case-event-set-description
+   DESCRIPTION:     This test verifies that the description of the Event object from where
+                    this method is called is changed to the passed in description
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The decription variable of the Event object from which this method is
+                    called whould be changed to the passed in description
+
+7) IDENTIFIER:      case-event-get-date
+   DESCRIPTION:     This test verifies that the correct date is returned when the getDate()
+                    method is called
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The method shall return the correct date object that is held within the 
+                    Event object
+
+8) IDENTIFIER:      case-event-set-date
+   DESCRIPTION:     This test verifies that when the setDate() method is called, the date 
+                    variable within the Event object from where the method was called changes
+                    to the passed in date
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The date variable with in the Event object from with the method was called
+                    should be equal to the date that was passed in as an arguement
+
+9) IDENTIFIER:      case-event-compare-to-greater
+   DESCRIPTION:     This test verifies that when an event with a later date object is passed 
+                    into the compareTo() function, a positive integer is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The compareTo() method should return a positive integer that coresponds
+                    to the difference between the two dates
+
+10)IDENTIFIER:      case-event-compare-to-less
+   DESCRIPTION:     This test verifies that when an event with a later date object is passed 
+                    into the compareTo() function, a negative integer is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Event class
+   POSTCONDITIONS:  The compareTo() method should return a negative integer that coresponds
+                    to the difference between the two dates
+----------------------------------------------------------------------------------------------------
+Exam.java
+
+Methods:
+public Exam(String name, Course course)
+public Exam(String name)
+public Course getCourse()
+public void setCourse(Course course)
+
+1) IDENTIFIER:      case-exam-full-constrcutor
+   DESCRIPTION:     This test verifies that the Exam is properly initialized when the full 
+                    constructor is called
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  The method will return a properly formatted Exam object using all of the
+                    passed in arguements
+
+2) IDENTIFIER:      case-exam-small-constructor
+   DESCRIPTION:     This test verifies that the Exam is properly initialized when the small
+                    constructor is called
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  This method will return a properly formatted Exam object using the name 
+                    passed in as an argument
+
+3) IDENTIFIER:      case-exam-get-course
+   DESCRIPTION:     This test verifies that the getCourse() method of the Exam class returns
+                    the Course that is stored in the Exam object
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  The method should return the Course Object that is stored in the Exam object
+
+4) IDENTIFIER:      case-exam-set-course
+   DESCRIPTION:     This test verifies that the setCourse() method of the Exam class will change
+                    the course that is stored in the Exam object to the Course that is passed into
+                    the method
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  The setCourse() method should change the stored Course object to the Course
+                    passed into the method
+
+----------------------------------------------------------------------------------------------------
+Assignment.java
+
+----------------------------------------------------------------------------------------------------
+Appointment.java
+
+----------------------------------------------------------------------------------------------------
+Timetable.java
+
+----------------------------------------------------------------------------------------------------
+Calendar.java
+
+----------------------------------------------------------------------------------------------------
+Course.java

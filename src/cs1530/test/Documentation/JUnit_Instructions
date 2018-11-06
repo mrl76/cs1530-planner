@@ -1,0 +1,14 @@
+Instructions for runnning JUnit tests
+
+MAKE SURE THAT THE FOLLOWING FILES ARE IN THE SAME FOLDER AS THE TEST YOU ARE RUNNING:
+hamcrest-core-1.3.jar 
+junit-4.12.jar
+mockito-core-2.23.2.jar (used for mocks and stubs)
+
+Use the following command to compile test files:
+javac -classpath .\junit-4.12.jar;.\hamcrest-core-1.3.jar;./mockito-core-1.10.19.jar <TestFile.java> <FileToTest.java>
+-replace <text> with the specified files
+
+Run the tests using the following command after compilation:
+java -cp .;.\junit-4.12.jar;.\hamcrest-core-1.3.jar org.junit.runner.JUnitCore <TestFile>
+-<TestFile> will be the same as the <TestFile.java> except without the .java
