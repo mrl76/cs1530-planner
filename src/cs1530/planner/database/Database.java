@@ -75,4 +75,8 @@ public class Database {
 			}
 		}
 	}
+	
+	public UserProfile getProfile(){
+		return new UserProfile("Dummy", "pw");
+	}
 }
