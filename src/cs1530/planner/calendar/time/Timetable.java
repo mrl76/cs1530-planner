@@ -1,5 +1,7 @@
 package cs1530.planner.calendar.time;
 
+import cs1530.planner.util.Utils;
+
 import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.util.Date;
@@ -27,11 +29,12 @@ public class Timetable {
 	
 	public Timetable(String dataString) {
 		//TODO construct from valid data file string
+		
 	}
 	
 	public String toString() {
-		//TODO used for file saving
-		return null;
+		String daysString = Utils.toFileString(",", days[0], days[1], days[2], days[3], days[4], days[5], days[6]);
+		return Utils.toFileString(";t;", interval.name(), intervalSize, startDate.getTime(), endDate.getTime(), allDay, daysString);
 	}
 	
 	public Interval getInterval() {

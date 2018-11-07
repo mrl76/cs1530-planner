@@ -23,4 +23,16 @@ public class Utils {
 	public static Date now() {
 		return Calendar.getInstance().getTime();
 	}
+	
+	public static String toFileString(String delim, Object... properties) {
+		StringBuilder result = new StringBuilder();
+		boolean addDelim = false;
+		for(Object o : properties) {
+			if(addDelim)
+				result.append(delim);
+			result.append(o == null ? "null" : o.toString());
+			addDelim = true;
+		}
+		return result.toString();
+	}
 }
