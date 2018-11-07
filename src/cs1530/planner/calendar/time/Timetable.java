@@ -25,6 +25,10 @@ public class Timetable {
 		Arrays.fill(days, true);
 	}
 	
+	public Timetable(String dataString) {
+		//TODO construct from valid data file string
+	}
+	
 	public String toString() {
 		//TODO used for file saving
 		return null;

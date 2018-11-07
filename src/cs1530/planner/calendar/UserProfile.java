@@ -6,18 +6,19 @@ public class UserProfile {
 	private String password;
 	private Calendar calendar;
 	
-	//constructor
-	public UserProfile(String name, String password){
-		this.username = name;
-		this.password = password;
-		this.calendar = new Calendar();
-	}
-	
-	//constructor
+	//constructors
 	public UserProfile(String name, String password, Calendar cal){
 		this.username = name;
 		this.password = password;
 		this.calendar = cal;
+	}
+	
+	public UserProfile(String name, String password){
+		this(name, password, new Calendar());
+	}
+	
+	public UserProfile(String name) {
+		this(name, null);
 	}
 	
 	//returns the calendar for the user
@@ -75,7 +76,5 @@ public class UserProfile {
 	public int hashCode() {
 		return username.hashCode();
 	}
-	
-	//WILL NEED MORE METHODS PROBABLY AS SOON AS CALENDAR IS COMPLETED OR I MAY BE WRONG DEPENDING ON HOW THATS STRUCTUREd
 		
 }

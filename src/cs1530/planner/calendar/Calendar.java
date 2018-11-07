@@ -20,6 +20,14 @@ public class Calendar {
 		return courses;
 	}
 	
+	public void addCourse(Course c) {
+		courses.add(c);
+	}
+	
+	public void removeCourse(Course c) {
+		courses.remove(c);
+	}
+	
 	public SortedSet<Appointment> getEvents() {
 		return events;
 	}

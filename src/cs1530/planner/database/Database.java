@@ -7,40 +7,44 @@ import cs1530.planner.calendar.UserProfile;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Database {
-	private Set<UserProfile> profiles;
+	private Map<String, UserProfile> profiles;
 	
 	public Database() {
-		this.profiles = new HashSet<>();
+		this.profiles = new HashMap<>();
 	}
 	
 	public void save() {
-		for(UserProfile profile : profiles) {
-			File profileDir = new File("profile_" + profile.getUsername());
-			while(!profileDir.exists()) {
-				if(!profileDir.mkdir()) {
-					System.out.println("Could not save profile \'" + profile.getUsername() + "\'");
-					break;
-				}
-			}
-			Calendar calendar = profile.getCalendar();
-			File courseFile = new File(profileDir + File.separator + "courses.txt");
-			FileWriter writer;
-			try {
-				writer = new FileWriter(courseFile, false);
-				for(Course c : calendar.getCourses()) {
-					writer.write(c.getName() + ";c;" + c.getDescription() + ";c;" + c.getTimetable());
-					writer.write(System.lineSeparator());
-				}
-				//TODO write the other properties of user profiles to other files
-				writer.close();
-			} catch(IOException ex) {
+		for(UserProfile profile : profiles.values()) {
+			saveProfile(profile);
+		}
+	}
+	
+	private void saveProfile(UserProfile profile) {
+		File profileDir = new File("profile_" + profile.getUsername());
+		while(!profileDir.exists()) {
+			if(!profileDir.mkdir()) {
 				System.out.println("Could not save profile \'" + profile.getUsername() + "\'");
+				break;
 			}
+		}
+		Calendar calendar = profile.getCalendar();
+		File courseFile = new File(profileDir + File.separator + "courses.txt");
+		FileWriter writer;
+		try {
+			writer = new FileWriter(courseFile, false);
+			for(Course c : calendar.getCourses()) {
+				writer.write(c.toString());
+				writer.write(System.lineSeparator());
+			}
+			//TODO write the other properties of user profiles to other files
+			writer.close();
+		} catch(IOException ex) {
+			System.out.println("Could not save profile \'" + profile.getUsername() + "\'");
 		}
 	}
 	
@@ -51,21 +55,28 @@ public class Database {
 		File[] contents;
 		if((contents = working.listFiles()) == null)
 			return;
+		profiles.clear();
 		for(File profileDir : contents) {
 			if(!profileDir.isDirectory())
 				continue;
 			if(!profileDir.getName().startsWith("profile_"))
 				continue;
 			File[] profileData = profileDir.listFiles();
-			if(profileData == null)
+			if(profileData == null || profileData.length == 0)
 				continue;
 			Scanner scanner;
+			UserProfile next = new UserProfile(profileDir.getName().replaceFirst("profile_", ""));
 			for(File f : profileData) {
 				try {
 					scanner = new Scanner(f);
 					switch (f.getName()) {
 					case "courses.txt":
-						//TODO add courses to profile based on parsed file strings
+						//add all courses in courses.txt
+						while(scanner.hasNextLine()) {
+							String line = scanner.nextLine();
+							if(!line.isEmpty())
+								next.getCalendar().addCourse(new Course(line));
+						}
 						break;
 						//TODO add more cases, one for each file type
 					}
@@ -76,7 +87,7 @@ public class Database {
 		}
 	}
 	
-	public UserProfile getProfile(){
-		return new UserProfile("Dummy", "pw");
+	public UserProfile getProfile(String username){
+		return profiles.get(username);
 	}
 }

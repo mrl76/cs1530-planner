@@ -1,7 +1,6 @@
 package cs1530.planner.calendar;
 
 import cs1530.planner.calendar.time.Timetable;
-import cs1530.planner.util.Utils;
 
 public class Course {
 	private String name, description;
@@ -13,8 +12,14 @@ public class Course {
 		this.timetable = timetable;
 	}
 	
-	public Course(String name) {
-		this(name, "", new Timetable(Utils.now()));
+	public Course(String dataString) {
+		String[] data = dataString.split(";c;");
+		if(data.length >= 1)
+			name = data[0];
+		if(data.length == 3) {
+			description = data[1];
+			timetable = new Timetable(data[2]);
+		}
 	}
 	
 	public String getName() {
@@ -39,5 +44,10 @@ public class Course {
 	
 	public void setTimetable(Timetable timetable) {
 		this.timetable = timetable;
+	}
+	
+	@Override
+	public String toString() {
+		return name + ";c;" + description + ";c;" + timetable;
 	}
 }
