@@ -1,6 +1,6 @@
-Test Plan for Unit Tests
+Calendar Test Plan for Unit Tests
 Michael Long
-Created: 11/1/2018
+Created: 11/13/2018
 Last Updated: 11/13/2018
 
 Classes to test:
@@ -15,7 +15,7 @@ Classes to test:
 
 Note: Interval.java was excluded from unit testing due to it only holding an enum object (11/1/2018)
 ----------------------------------------------------------------------------------------------------
-Event.java (ll/5/2018)
+Event.java (ll/13/2018)
 
 Methods:
 public Event(String name, String description, Date date)
@@ -124,7 +124,7 @@ test class
    POSTCONDITIONS:  The compareTo() method should return a negative integer that coresponds
                     to the difference between the two dates
 ----------------------------------------------------------------------------------------------------
-Exam.java(11/5/2018)
+Exam.java(11/13/2018)
 
 Methods:
 public Exam(String name, Course course)
@@ -294,7 +294,6 @@ Methods:
 Currently Interval.java is simply an enum, no need for testing
 
 ----------------------------------------------------------------------------------------------------
-
 Timetable.java(11/13/2018)
 
 Methods:

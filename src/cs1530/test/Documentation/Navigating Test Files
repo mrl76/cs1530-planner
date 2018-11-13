@@ -1,0 +1,8 @@
+This is a quick guide to how I have the test files set up.
+
+Currently there is one main test document 
+    CS1530-planner>src>cs1530>test>Documentation>Unit Test Plan.txt
+as well as several smaller ones.
+    CS1530-planner>src>cs1530>planner>calendar>Calendar Unit Test Plan.txt
+    CS1530-planner>src>cs1530>planner>
+    CS1530-planner>src>cs1530>planner>
