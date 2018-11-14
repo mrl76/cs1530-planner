@@ -1,4 +1,4 @@
-Calendar Test Plan for Unit Tests
+Database Test Plan for Unit Tests
 Michael Long
 Created: 11/14/2018
 Last Updated: 11/14/2018

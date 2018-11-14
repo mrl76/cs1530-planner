@@ -1,0 +1,51 @@
+Login Test Plan for Unit Tests
+Michael Long
+Created: 11/14/2018
+Last Updated: 11/14/2018
+
+Classes to Test:
+Login.java
+
+----------------------------------------------------------------------------------------------------
+Login.java (11/14/2018)
+
+Methods:
+public static UserProfile userLogin(String username, String password, Database database)
+public static UserProfile createProfile(String username, String password, Set<UserProfile> profiles)
+
+1) IDENTIFIER:      case-login-user-login-bad-username
+   DESCRIPTION:     This test verifies that when a user logs in with a bad username, they will
+                    get somesort of error
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  This method will display an error whena user tries to login with a bad
+                    username
+
+2) IDENTIFIER:      case-login-user-login-bad-password
+   DESCRIPTION:     This test verifies that when a user tries to login with a password that 
+                    does not match the password on the UserProfile that the username points to
+                    then an error is displayed
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  This method will display an error message when a bad pasword is entered
+
+3) IDENTIFIER:      case-login-create-profile-user-present
+   DESCRIPTION:     This test verifies that when a user tries to create a new profile that has
+                    the same username as a UserProfile that is already present, then the method
+                    will display an error
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  This method will display an error when createProfile() tries to make a
+                    profile with an already present username
+
+1) IDENTIFIER:      case-login-create-profile-user-not-present
+   DESCRIPTION:     This test verifies that a new user profile is created when createProfile()
+                    is called and the username does not represent a UserProfile within the Database
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   POSTCONDITIONS:  This method will create a new user profile with the passed in username and
+                    password
