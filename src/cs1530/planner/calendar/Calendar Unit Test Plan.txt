@@ -601,21 +601,70 @@ public int hashCode()
    EXECUTION STEPS: This test will run in the unit test program for the appointment class
    POSTCONDITIONS:  
 
-2) IDENTIFIER:      case-user-profile-full-constructor
+2) IDENTIFIER:      case-user-profile-name-password-constructor
    DESCRIPTION:     
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the appointment class
    POSTCONDITIONS:  
 
-3) IDENTIFIER:      case-user-profile-full-constructor
+3) IDENTIFIER:      case-user-profile-name-constructor
    DESCRIPTION:     
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the appointment class
    POSTCONDITIONS:  
 
-4) IDENTIFIER:      case-user-profile-full-constructor
+4) IDENTIFIER:      case-user-profile-get-calendar
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+5) IDENTIFIER:      case-user-profile-get-username
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+6) IDENTIFIER:      case-user-profile-verify-password
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+7) IDENTIFIER:      case-user-profile-verify-username
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+8) IDENTIFIER:      case-user-profile-reset-username
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+9) IDENTIFIER:      case-user-profile-reset-password
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+10)IDENTIFIER:      case-user-profile-equals
+   DESCRIPTION:
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+11) IDENTIFIER:      case-user-profile-hash-code
    DESCRIPTION:     
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
