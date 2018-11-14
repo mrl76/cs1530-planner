@@ -18,7 +18,7 @@ public static UserProfile createProfile(String username, String password, Set<Us
                     get somesort of error
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Login class
    POSTCONDITIONS:  This method will display an error whena user tries to login with a bad
                     username
 
@@ -28,7 +28,7 @@ public static UserProfile createProfile(String username, String password, Set<Us
                     then an error is displayed
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Login class
    POSTCONDITIONS:  This method will display an error message when a bad pasword is entered
 
 3) IDENTIFIER:      case-login-create-profile-user-present
@@ -37,7 +37,7 @@ public static UserProfile createProfile(String username, String password, Set<Us
                     will display an error
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Login class
    POSTCONDITIONS:  This method will display an error when createProfile() tries to make a
                     profile with an already present username
 
@@ -46,6 +46,6 @@ public static UserProfile createProfile(String username, String password, Set<Us
                     is called and the username does not represent a UserProfile within the Database
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Login class
    POSTCONDITIONS:  This method will create a new user profile with the passed in username and
                     password

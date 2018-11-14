@@ -20,7 +20,7 @@ public UserProfile getProfile(String username)
                     constructor is called
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Database class
    POSTCONDITIONS:  This method will initalize a new Database which should consist of a new
                     hashmap
 
@@ -30,29 +30,29 @@ public UserProfile getProfile(String username)
                     be used to load the sate of the Database later
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Database class
    POSTCONDITIONS:  The method should produce a file in the same directery as the Database.java
                     whose content represents the Database at the time of calling the method
 
-METHOD NOT FULLY IMPLEMENTED YET (11/14/2018)
 3) IDENTIFIER:      case-database-save-profile
    DESCRIPTION:     This test verifies that when the saveProfile() method is called by a Database
                     object, the passed in userProfile is saved to a file
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Database class
    POSTCONDITIONS:  This method should produce a file that contains the state of the userProfile
                     object that is passed in.
+   NOTES:           Method not fully implemented yes (Michael Long 11/14/2018)
 
-METHOD NOT FULLY IMPLEMENTED YET (11/14/2018)
 4) IDENTIFIER:      case-database-load
    DESCRIPTION:     This test verifes that when the load() method is called from a Database
                     object, a previous state of the Database is loaded
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Database class
    POSTCONDITIONS:  This method should replicate a Database state that was saved into a file
                     using the save() method
+   NOTES:           Method not fully implemented yet (Michael Long 11/14/2018)
 
 5) IDENTIFIER:      case-database-get-profile-present
    DESCRIPTION:     This test verifies that when the getProfile() method is called from a 
@@ -60,7 +60,7 @@ METHOD NOT FULLY IMPLEMENTED YET (11/14/2018)
                     the passed in string when that UserProfile is present in the database. 
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Database class
    POSTCONDITIONS:  The method should return the UserProfile that is represented by the passed
                     in string
 
@@ -70,5 +70,5 @@ METHOD NOT FULLY IMPLEMENTED YET (11/14/2018)
                     string, that somesort of error message is displayed. 
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Exam class
+   EXECUTION STEPS: This test will run in the unit test program for the Database class
    POSTCONDITIONS:  The method should display an error message
