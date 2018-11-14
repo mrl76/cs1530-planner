@@ -1,7 +1,7 @@
 Calendar Test Plan for Unit Tests
 Michael Long
 Created: 11/13/2018
-Last Updated: 11/13/2018
+Last Updated: 11/14/2018
 
 Classes to test:
 -Event.java
@@ -192,7 +192,7 @@ public void setCourse(Course course)
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Assignment class
-   POSTCONDITIONS:  The method should return a new Assignment object that was created bugin the
+   POSTCONDITIONS:  The method should return a new Assignment object that was created using the
                     passed in name and the course object should be left NULL
 
 3) IDENTIFIER:      case-assignment-get-course-set
@@ -219,7 +219,7 @@ public void setCourse(Course course)
                     to the passed in Course object
 
 ----------------------------------------------------------------------------------------------------
-Appointment.java(11/13/2018)
+Appointment.java(11/14/2018)
 
 Methods:
 public Appointment(String name, String description, Date date)
@@ -234,58 +234,94 @@ public void setDate(Date date)
 public int compareTo(Appointment o)
 
 1) IDENTIFIER:      case-appointment-full-constructor
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+   DESCRIPTION:     This test verifies that the Appointment is properly initialized when the full 
+                    constructor is called
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
+   POSTCONDITIONS:  The method should return a new Assignment object that was created bugin the
+                    passed in name and the passed in course object
 
 2) IDENTIFIER:      case-appointment-short-constructor
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+   DESCRIPTION:     This test verifies that the Appointment is properly initialized when the short 
+                    constructor is called
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Apointment class
+   POSTCONDITIONS:  The method should return a new Appointment object that was created using in the
+                    passed in name and the date object and description should be left NULL
 
 3) IDENTIFIER:      case-appointment-get-name
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+   DESCRIPTION:     This test verifies that when the method getName() is called, it returns the name string
+                    that is associated with the object.
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
+   POSTCONDITIONS:  The method should return a string that is associated with the appointment
+                    object that it was called from
 
 4) IDENTIFIER:      case-appointment-set-name
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
+   DESCRIPTION:     This test verifes that when the mehtod setName() is called from a appointment object
+                    that the name associated with the object is changed to the passed in name
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
    POSTCONDITIONS:
 
 5) IDENTIFIER:      case-appointment-get-description
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+   DESCRIPTION:     This test verifies that when the getDescription() method is called from a Appointment
+                    object that the description associated with the Appointment object is returned 
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
+   POSTCONDITIONS:  This method should return the description that is associated with the Appointment
+                    from which it was called
 
 6) IDENTIFIER:      case-appointment-set-decription
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+   DESCRIPTION:     This test verifies that when the setDescription() method is called from a 
+                    Appointment object that the Appointment object's description changes to the
+                    passed in description
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
+   POSTCONDITIONS:  This method should change the description associated with the Appointment
+                    object to the passed in description
 
 7) IDENTIFIER:      case-appointment-get-date
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+   DESCRIPTION:     This test verifies that when the getDate() method is called from an Appointment
+                    object, that the date associated with the Appointment object is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class 
+   POSTCONDITIONS:  When this method is called, it should return the date that is associated with
+                    the Appointment object
 
 8) IDENTIFIER:      case-appointment-set-date
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+   DESCRIPTION:     This test verifies that when the setDate() method is called from an Appointment
+                    object, that the Appointment's associated date is changed to the passed in date
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
+   POSTCONDITIONS:  This method should change the date associated with the Appointment object to 
+                    the passed in one
 
-9) IDENTIFIER:      case-appointment-compare-to
-   DESCRIPTION:
-   PRECONDITIONS:
-   EXECUTION STEPS:
-   POSTCONDITIONS:
+9) IDENTIFIER:      case-appointment-compare-to-greater
+   DESCRIPTION:     This test verifies that when an appointment with a later date object is passed 
+                    into the compareTo() function, a positive integer is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
+   POSTCONDITIONS:  The compareTo() method should return a positive integer that coresponds
+                    to the difference between the two dates
+
+10)IDENTIFIER:      case-appointment-compare-to-less
+   DESCRIPTION:     This test verifies that when an appointment with a later date object is passed 
+                    into the compareTo() function, a negative integer is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  The compareTo() method should return a negative integer that coresponds
+                    to the difference between the two dates
 
 ----------------------------------------------------------------------------------------------------
 Interval.java(11/13/2018)
@@ -314,6 +350,118 @@ public void setAllDay(boolean allDay)
 public boolean isDayOpen(DayOfWeek day)
 public void setDay(DayOfWeek day, boolean open)
 
+1) IDENTIFIER:      case-timetable-full-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+2) IDENTIFIER:      case-timetable-short-date-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+3) IDENTIFIER:      case-timetable-datastring-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+4) IDENTIFIER:      case-timetable-to-string
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+5) IDENTIFIER:      case-timetable-get-interval
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+6) IDENTIFIER:      case-timetable-set-interval
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+7) IDENTIFIER:      case-timetable-get-interval-size
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+8) IDENTIFIER:      case-timetable-set-interval-size
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+9) IDENTIFIER:      case-timetable-get-start-date
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+10)IDENTIFIER:      case-timetable-set-start-date
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+11)IDENTIFIER:      case-timetable-get-end-date
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+12)IDENTIFIER:      case-timetable-set-end-date
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+13)IDENTIFIER:      case-timetable-is-all-day
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+14)IDENTIFIER:      case-timetable-set-all-day
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+15)IDENTIFIER:      case-timetable-is-day-open
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+16)IDENTIFIER:      case-timetable-set-day
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
 ----------------------------------------------------------------------------------------------------
 Calendar.java(11/13/2018)
 
@@ -323,6 +471,34 @@ public Set<Course> getCourses()
 public void addCourse(Course c)
 public void removeCourse(Course c)
 public SortedSet<Appointment> getEvents()
+
+1) IDENTIFIER:      case-calendar-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+2) IDENTIFIER:      case-calendar-get-course
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+3) IDENTIFIER:      case-calendar-remove-course
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+4) IDENTIFIER:      case-calendar-get-events
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
 
 ----------------------------------------------------------------------------------------------------
 Course.java(11/13/2018)
@@ -338,4 +514,110 @@ public void setTimetable(Timetable timetable)
 @Override
 public String toString()
 
+1) IDENTIFIER:      case-course-full-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+2) IDENTIFIER:      case-course-datastring-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+3) IDENTIFIER:      case-course-get-name
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+4) IDENTIFIER:      case-course-set-name
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+5) IDENTIFIER:      case-course-get-description
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+5) IDENTIFIER:      case-course-set-description
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+6) IDENTIFIER:      case-course-get-timetable
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+7) IDENTIFIER:      case-course-set-timetable
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+8) IDENTIFIER:      case-course-to-string
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
 ----------------------------------------------------------------------------------------------------
+UserProfile.java (11/14/2018)
+
+Methods:
+public UserProfile(String name, String password, Calendar cal)
+public UserProfile(String name, String password)
+public UserProfile(String name)
+public Calendar getCalendar()
+public String getUsername()
+public boolean verifyPassword(String attempt)
+public boolean verifyUserName(String attempt)
+public void resetUserName(String newName)
+public boolean resetPassword(String newPassword, String oldPassword)
+@Override
+public boolean equals(Object obj)
+@Override
+public int hashCode()
+
+1) IDENTIFIER:      case-user-profile-full-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+2) IDENTIFIER:      case-user-profile-full-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+3) IDENTIFIER:      case-user-profile-full-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
+
+4) IDENTIFIER:      case-user-profile-full-constructor
+   DESCRIPTION:     
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   POSTCONDITIONS:  
