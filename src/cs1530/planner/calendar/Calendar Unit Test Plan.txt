@@ -1,7 +1,7 @@
 Calendar Test Plan for Unit Tests
 Michael Long
 Created: 11/13/2018
-Last Updated: 11/14/2018
+Last Updated: 11/17/2018
 
 Classes to test:
 -Event.java
@@ -38,7 +38,7 @@ test class
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Event class
    POSTCONDITIONS:  The test should verify that a new Event object has been created 
-                    using the correct passed in arguements 
+                    using the correct passed in arguments 
 
 2) IDENTIFIER:      case-event-short-constructor
    DESCRIPTION:     This test verifies that the short constructor method of the Event class
@@ -104,7 +104,7 @@ test class
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Event class
    POSTCONDITIONS:  The date variable with in the Event object from with the method was called
-                    should be equal to the date that was passed in as an arguement
+                    should be equal to the date that was passed in as an argument
 
 9) IDENTIFIER:      case-event-compare-to-greater
    DESCRIPTION:     This test verifies that when an event with a later date object is passed 
@@ -139,7 +139,7 @@ public void setCourse(Course course)
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Exam class
    POSTCONDITIONS:  The method will return a properly formatted Exam object using all of the
-                    passed in arguements
+                    passed in arguments
 
 2) IDENTIFIER:      case-exam-small-constructor
    DESCRIPTION:     This test verifies that the Exam is properly initialized when the small
@@ -261,7 +261,7 @@ public int compareTo(Appointment o)
                     object that it was called from
 
 4) IDENTIFIER:      case-appointment-set-name
-   DESCRIPTION:     This test verifes that when the mehtod setName() is called from a appointment object
+   DESCRIPTION:     This test verifies that when the mehtod setName() is called from a appointment object
                     that the name associated with the object is changed to the passed in name
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
@@ -319,7 +319,7 @@ public int compareTo(Appointment o)
                     into the compareTo() function, a negative integer is returned
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
+   EXECUTION STEPS: This test will run in the unit test program for the Appointment class
    POSTCONDITIONS:  The compareTo() method should return a negative integer that coresponds
                     to the difference between the two dates
 
@@ -330,7 +330,7 @@ Methods:
 Currently Interval.java is simply an enum, no need for testing
 
 ----------------------------------------------------------------------------------------------------
-Timetable.java(11/13/2018)
+Timetable.java(11/17/2018)
 
 Methods:
 public Timetable(Interval interval, int intervalSize, Date startDate, Date endDate, boolean allDay, boolean[] days)
@@ -351,119 +351,154 @@ public boolean isDayOpen(DayOfWeek day)
 public void setDay(DayOfWeek day, boolean open)
 
 1) IDENTIFIER:      case-timetable-full-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that when the full Timetable contructor creates a new 
+                    Timetable object using the passed in parameters
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return a new Timetable object created from the passed in
+                    parameters with each parameter being mapped to its object variable with the
+                    same name
 
 2) IDENTIFIER:      case-timetable-short-date-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that when the short date constructor is called a new
+                    Timetable object is made 
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return a new Timetable object that uses the passed in
+                    date object as the start and end time but all other feilds shouls be set
+                    to default values
 
 3) IDENTIFIER:      case-timetable-datastring-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the Timetable datastring constructor creates a new
+                    Timetable object from the passed in datastring 
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should parse the datastring and return a new Timetable object
+                    based on the datastring's contents
 
 4) IDENTIFIER:      case-timetable-to-string
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the toString() method of the Timetable class
+                    returns a properly formatted String representaion of the Timetable object 
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return the properly formatted verision of the Timetable
+                    object
 
 5) IDENTIFIER:      case-timetable-get-interval
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that when the getInterval() is called, the method returns
+                    the interval
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return the interval that is associated with the object
+                    from which it was called
 
 6) IDENTIFIER:      case-timetable-set-interval
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setInterval() method of the Timetable class sets
+                    the interval variable in the Timetable object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should set the interval variable within the object from which
+                    the method was called to the passed in interval argument that was passed in
 
 7) IDENTIFIER:      case-timetable-get-interval-size
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getIntervalSize() method returns the intervalSize
+                    variable of the Timetable object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return the intervalSize variable of the Timetable object
+                    from which it was called
 
 8) IDENTIFIER:      case-timetable-set-interval-size
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setIntervalSize() method sets the intervalSize variable
+                    to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should change the intervalSize variable of the Timetable object to 
+                    the passed in value 
 
 9) IDENTIFIER:      case-timetable-get-start-date
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getStartDate() method returns the startDate
+                    variable of the Timetable object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return the startDate variable of the Timetable object
+                    from which it was called
 
 10)IDENTIFIER:      case-timetable-set-start-date
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setStartDate() method sets the startDate variable
+                    to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should change the startDate variable of the Timetable object to 
+                    the passed in value 
 
 11)IDENTIFIER:      case-timetable-get-end-date
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getEndDate() method returns the startDate
+                    variable of the Timetable object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return the endDate variable of the Timetable object
+                    from which it was called
 
 12)IDENTIFIER:      case-timetable-set-end-date
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setEndDate() method sets the endDate variable
+                    to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should change the endDate variable of the Timetable object to 
+                    the passed in value 
 
 13)IDENTIFIER:      case-timetable-is-all-day
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the isAllDay() method returns the value of the allDay
+                    variable of the Timetable object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return the value of the allDay variable within the Timetable
+                    object from which it was called
 
 14)IDENTIFIER:      case-timetable-set-all-day
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setAllDay() method sets the allDay variable
+                    to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should change the allDay variable of the Timetable object to 
+                    the passed in value 
 
 15)IDENTIFIER:      case-timetable-is-day-open
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the isDayOpen() method returns whether or not a
+                    day is open within the Timetable
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should return true if the day specified by the passed in
+                    argument is free, otherwise it should return false
+
 
 16)IDENTIFIER:      case-timetable-set-day
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that when the setDay() method is called the specified day's
+                    value is set to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
+   POSTCONDITIONS:  This method should change the index in the days array within the Timetable object
+                    to the passed boolean open.
 
 ----------------------------------------------------------------------------------------------------
-Calendar.java(11/13/2018)
+Calendar.java(11/17/2018)
 
 Methods:
 public Calendar()
@@ -473,35 +508,52 @@ public void removeCourse(Course c)
 public SortedSet<Appointment> getEvents()
 
 1) IDENTIFIER:      case-calendar-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that an empty Calendar object is created when the
+                    Calendar constructor is called
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Calendar class
+   POSTCONDITIONS:  This method should return a new Calendar object with an empty course list and 
+                    an empty event list
 
-2) IDENTIFIER:      case-calendar-get-course
-   DESCRIPTION:     
+2) IDENTIFIER:      case-calendar-get-courses
+   DESCRIPTION:     This test verifies that the getCourses() method will return the course list
+                    of the Calendar
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Calendar class
+   POSTCONDITIONS:  This method should return the Set<Course> courses of the Calendar Object
+                    where the method was called from
 
-3) IDENTIFIER:      case-calendar-remove-course
-   DESCRIPTION:     
+3) IDENTIFIER:      case-calendar-remove-course-present
+   DESCRIPTION:     This test verifies that the removeCourse() method removes the specified course
+                    from the Calendar object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Calendar class
+   POSTCONDITIONS:  The method should remove the course from the Set<Course> courses if there is
+                    a course that matches in the list
 
-4) IDENTIFIER:      case-calendar-get-events
-   DESCRIPTION:     
+4) IDENTIFIER:      case-calendar-remove-course-not-present
+   DESCRIPTION:     This test verifies that the removeCourse() method should return some sort of 
+                    error when a course that is not in the list is passed in
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Calendar class
+   POSTCONDITIONS:  The method should return an error when the passed in course does not exist
+                    within the Calendar's course list
+
+5) IDENTIFIER:      case-calendar-get-events
+   DESCRIPTION:     This test verifies that when the getEvents() method is called the Calendar's
+                    event list is returned
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Calendar class
+   POSTCONDITIONS:  This method should return the SortedSet<Appointment> events that belongs to
+                    the Calendar object where it was called from
 
 ----------------------------------------------------------------------------------------------------
-Course.java(11/13/2018)
+Course.java(11/17/2018)
 Methods:
 public Course(String name, String description, Timetable timetable)
 public Course(String dataString)
@@ -515,69 +567,88 @@ public void setTimetable(Timetable timetable)
 public String toString()
 
 1) IDENTIFIER:      case-course-full-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the full course constructor creates a new Course
+                    and sets its variables to the passed in values
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should return a new Course object whose variables have been
+                    set to the passed in values
 
 2) IDENTIFIER:      case-course-datastring-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the datastring constructor creates a new Course
+                    and sets it variables according to the datastring
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should return a new COurse object whose variables are based
+                    on the data contained within the data string 
 
 3) IDENTIFIER:      case-course-get-name
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getName() method returns the name
+                    variable of the Course object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should return the name variable of the Course object from
+                    which the method was called
 
 4) IDENTIFIER:      case-course-set-name
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setName() method changes the name variable
+                    of the Course variable to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should change the name variable of the course object to 
+                    the passed in value 
 
 5) IDENTIFIER:      case-course-get-description
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getDescription() method returns the description
+                    variable of the Course object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should return the description variable of the Course object from
+                    which the method was called
 
 5) IDENTIFIER:      case-course-set-description
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setDescription() method changes the description variable
+                    of the Course variable to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should change the description variable of the Course object to 
+                    the passed in value 
 
 6) IDENTIFIER:      case-course-get-timetable
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getTimetable() method returns the timetable
+                    variable of the Course object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should return the timetable variable of the Course object from
+                    which the method was called
 
 7) IDENTIFIER:      case-course-set-timetable
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the setTimetable() method changes the timetable variable
+                    of the Course variable to the passed in value
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should change the timetable variable of the Course object to 
+                    the passed in value 
 
 8) IDENTIFIER:      case-course-to-string
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the toString() method of the Course class
+                    returns a properly formatted String representaion of the Course object 
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the Course class
+   POSTCONDITIONS:  This method should return the properly formatted verision of the Course
+                    object
+
 ----------------------------------------------------------------------------------------------------
-UserProfile.java (11/14/2018)
+UserProfile.java (11/17/2018)
 
 Methods:
 public UserProfile(String name, String password, Calendar cal)
@@ -595,78 +666,144 @@ public boolean equals(Object obj)
 public int hashCode()
 
 1) IDENTIFIER:      case-user-profile-full-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the full UserProfile constructor creates a new UserProfile
+                    and sets its variables to the passed in values
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should return a new UserProfile object created from the passed in
+                    parameters with each parameter being mapped to its object variable with the
+                    same name
 
 2) IDENTIFIER:      case-user-profile-name-password-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that when the name/password constructor is called for the UserProfile
+                    object that a new UserProfile is created and the username and password are set to the passed
+                    in values but creates a new Calendar object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should create a new UserProfile object and sets the username and password to the
+                    passed in values but creates a new calendar object for the calendar variable
 
 3) IDENTIFIER:      case-user-profile-name-constructor
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that when only a username is passed into the constructor a new UserProfile
+                    is created using the passed in username
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method should return a new UserProfile object where the username is the passed in name,
+                    the password is null and calendar is a new Calendar object
 
 4) IDENTIFIER:      case-user-profile-get-calendar
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getCalendar() method returns the Calendar
+                    variable of the UserProfile object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should return the Calendar variable of the UserProfile object from
+                    which the method was called
 
 5) IDENTIFIER:      case-user-profile-get-username
-   DESCRIPTION:     
+   DESCRIPTION:     This test verifies that the getUsername() method returns the username
+                    variable of the UserProfile object
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should return the username variable of the UserProfile object from
+                    which the method was called
 
-6) IDENTIFIER:      case-user-profile-verify-password
-   DESCRIPTION:     
+6) IDENTIFIER:      case-user-profile-verify-password-correct
+   DESCRIPTION:     This test verifies that when the attempt argument equals the stored password of
+                    the UserProfile the verifyPassword() method will return true
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method will return true if the attempt argument is equal to the password variable
+                    of the UserProfile from which it was called
 
-7) IDENTIFIER:      case-user-profile-verify-username
-   DESCRIPTION:     
+7) IDENTIFIER:      case-user-profile-verify-password-incorrect
+   DESCRIPTION:     This test verifies that when the attempt argument does not equal the stored password of
+                    the UserProfile the verifyPassword() method will return false
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method will return false if the attempt argument is not equal to the password variable
+                    of the UserProfile from which it was called
 
-8) IDENTIFIER:      case-user-profile-reset-username
-   DESCRIPTION:     
+8) IDENTIFIER:      case-user-profile-verify-username-correct
+   DESCRIPTION:     This test verifies that when the attempt argument equals the stored username of
+                    the UserProfile the verifyUserName() method will return true
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method will return true if the attempt argument is equal to the username variable
+                    of the UserProfile from which it was called
 
-9) IDENTIFIER:      case-user-profile-reset-password
-   DESCRIPTION:     
+9) IDENTIFIER:      case-user-profile-verify-username-incorrect
+   DESCRIPTION:     This test verifies that when the attempt argument does not equal the stored username of
+                    the UserProfile the verifyUserName() method will return false
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method will return false if the attempt argument is not equal to the username variable
+                    of the UserProfile from which it was called
 
-10)IDENTIFIER:      case-user-profile-equals
-   DESCRIPTION:
+10)IDENTIFIER:      case-user-profile-reset-username
+   DESCRIPTION:     This test verifies that when the resetUserName() method is called the UserProfile's username
+                    is changed to the passed in newName
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should change the username variable of the UserProfile object to 
+                    the passed in value 
 
-11) IDENTIFIER:      case-user-profile-hash-code
-   DESCRIPTION:     
+11)IDENTIFIER:      case-user-profile-reset-password-equal
+   DESCRIPTION:     This test verifies that when the resetPassword() method is called and the new password is 
+                    not the same as the old password the UserProfile's password is changed to the passed in newPassword
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the appointment class
-   POSTCONDITIONS:  
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should change the password variable of the UserProfile object to 
+                    the passed in value
+
+12)IDENTIFIER:      case-user-profile-reset-password-not-equal
+   DESCRIPTION:     This test verifies that when the resetPassword() method is called and the new password is 
+                    equal to the old password the method should return false
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should return false if the new password is equal to the old one
+
+13)IDENTIFIER:      case-user-profile-equals-true
+   DESCRIPTION:     This test verifies that when a UserProfile with the same username is passed into the
+                    equals() method the method should return true
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method should return true if the passed in object is a UserProfile and has the same
+                    username of the UserProfile fro which the method was called
+
+14)IDENTIFIER:      case-user-profile-equals-not-UserProfile
+   DESCRIPTION:     This test verifies that when an object that is not a UserProfile is passed into the 
+                    equals() method the method should return false
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method should return false if the passed in object is not a UserProfile
+
+15)IDENTIFIER:      case-user-profile-equals-username-not-equal
+   DESCRIPTION:     This test verifies that when an object that is a UserProfile and has a username that is not
+                    equal to the username of the UserProfile from which this method was called then the method
+                    should return false
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  The method should return false if the passed in object is a UserProfile but has a username
+                    that is not equal to the username of the UserProfile from which the method was called
+
+16)IDENTIFIER:      case-user-profile-hash-code
+   DESCRIPTION:     This test verifies that the hashCode() method returns a hash of the UserProfile
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the UserProfile class
+   POSTCONDITIONS:  This method should return a hash that represents the UserProfile that called the method
