@@ -19,9 +19,8 @@ public class Database {
 	}
 	
 	public void save() {
-		for(UserProfile profile : profiles.values()) {
+		for(UserProfile profile : profiles.values())
 			saveProfile(profile);
-		}
 	}
 	
 	private void saveProfile(UserProfile profile) {
@@ -50,6 +49,10 @@ public class Database {
 	
 	public void load() {
 		File working = new File(System.getProperty("user.dir"));
+		
+		//TODO remove test code
+		System.out.println(working);
+		
 		if(!working.exists())
 			throw new IllegalStateException("working directory does not exist");
 		File[] contents;
@@ -89,5 +92,11 @@ public class Database {
 	
 	public UserProfile getProfile(String username){
 		return profiles.get(username);
+	}
+	
+	public UserProfile createProfile(String username, String password) {
+		UserProfile user = new UserProfile(username, password);
+		profiles.put(username, user);
+		return user;
 	}
 }

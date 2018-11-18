@@ -32,6 +32,5 @@ public final class Login {
 		profiles.add(newUser);
 		return newUser;
 	}
-
 }
 
