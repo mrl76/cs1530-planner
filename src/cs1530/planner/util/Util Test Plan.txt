@@ -1,0 +1,41 @@
+Login Test Plan for Unit Tests
+Michael Long
+Created: 11/14/2018
+Last Updated: 11/14/2018
+
+Classes to Test:
+Utils.java
+
+----------------------------------------------------------------------------------------------------
+Utils.java (11/14/2018)
+
+Methods:
+public static void notification(String title, String message, TrayIcon.MessageType type)
+public static Date now()
+public static String toFileString(String delim, Object... properties)
+
+1) IDENTIFIER:      case-utils-notification
+   DESCRIPTION:     This test verifies that a notification is shown when the notification()
+                    method is called
+   PRECONDITIONS:   
+   EXECUTION STEPS: 
+   POSTCONDITIONS:  A notification should be displayed using the passed in title
+                    and message
+   NOTES:           JUnit may not be the best thing to test this. May want to wait until user mode
+                    testing (Michael Long 11/14/2018)
+                
+2) IDENTIFIER:      case-utils-now
+   DESCRIPTION:     This test verifies that when the now() method is called, it returns the current time
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Utils class
+   POSTCONDITIONS:  This method will return the current time as a Date()
+
+3) IDENTIFIER:      case-utils-to-file-string
+   DESCRIPTION:     This test verifies that when the toFileString() method is called, the method will
+                    return the string representation of the file
+   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the Utils class
+   POSTCONDITIONS:  This method return the string representation of a specified file
+   NOTES:           Does not seem to be fully implemented (Michael Long 11/14/2018)
