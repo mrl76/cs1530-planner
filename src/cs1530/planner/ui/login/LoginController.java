@@ -1,4 +1,4 @@
-package cs1530.planner.ui;
+package cs1530.planner.ui.login;
 
 import cs1530.planner.Main;
 import cs1530.planner.calendar.UserProfile;
