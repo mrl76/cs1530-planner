@@ -8,8 +8,6 @@ package cs1530.planner.login;
 import cs1530.planner.calendar.UserProfile;
 import cs1530.planner.database.Database;
 
-import java.util.Set;
-
 
 public final class Login {
 	/*
@@ -24,13 +22,6 @@ public final class Login {
 		
 		//validate password if correct return user
 		return user.verifyPassword(password) ? user : null;
-	}
-	
-	//adds new user to the set then returns said profile so that user is logged in and use their new calendar
-	public static UserProfile createProfile(String username, String password, Set<UserProfile> profiles) {
-		UserProfile newUser = new UserProfile(username, password);
-		profiles.add(newUser);
-		return newUser;
 	}
 }
 
