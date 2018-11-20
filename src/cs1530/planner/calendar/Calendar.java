@@ -31,4 +31,28 @@ public class Calendar {
 	public SortedSet<Appointment> getEvents() {
 		return events;
 	}
+	
+	public SortedSet<Appointment> getAssignments(){
+		SortedSet<Appointment> assignments = new TreeSet<>();
+		
+		for(Appointment appt: events){
+			if(appt instanceof Assignment){
+				assignments.add(appt);
+			}
+		}
+		
+		return assignments;
+	}
+	
+	public SortedSet<Appointment> getExams(){
+		SortedSet<Appointment> exams =  new TreeSet<>();
+		
+		for(Appointment appt: events){
+			if(appt instanceof Exam){
+				exams.add(appt);
+			}
+		}
+		
+		return exams;
+	}
 }
