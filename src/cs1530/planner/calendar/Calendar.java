@@ -95,7 +95,16 @@ public class Calendar {
 	}
 	
 	public void resetDate(Assignment a, Date newDate){
-		System.out.println("nothing");
+		//get Assignment info
+		String name = e.getName();
+		String description = e.getDescription();
+		Course course = e.getCourse();;
+
+		//remove assignment
+		this.removeAppointment(e);
+		
+		//create new assignment to readd to calendar
+		Assignment newAssignment = new Assignment(name, description, newDate,  course);
 	}
 	
 	
