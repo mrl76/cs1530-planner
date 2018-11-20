@@ -34,6 +34,17 @@ public class Calendar {
 		return events;
 	}
 	
+	//new
+	public void addAppointment(Appointment a){
+		events.add(a);
+	}
+	
+	//new
+	public void removeAppointment(Appointment a){
+		events.remove(a);
+	}
+	
+	//new
 	public SortedSet<Appointment> getAssignments(){
 		SortedSet<Appointment> assignments = new TreeSet<>();
 		
@@ -46,6 +57,7 @@ public class Calendar {
 		return assignments;
 	}
 	
+	//new
 	public SortedSet<Appointment> getExams(){
 		SortedSet<Appointment> exams =  new TreeSet<>();
 		
