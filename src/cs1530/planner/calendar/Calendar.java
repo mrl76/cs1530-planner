@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.Date;
 
 public class Calendar {
 	private Set<Course> courses;
@@ -68,5 +69,10 @@ public class Calendar {
 		}
 		
 		return exams;
+	}
+	
+	//new
+	public void resetDate(Appointment a, Date newDate){
+		a.setDate(newDate);
 	}
 }
