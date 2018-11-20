@@ -1,6 +1,8 @@
 package cs1530.planner.calendar;
 
 import cs1530.planner.calendar.event.Appointment;
+import cs1530.planner.calendar.event.Assignment;
+import cs1530.planner.calendar.event.Exam;
 
 import java.util.HashSet;
 import java.util.Set;
