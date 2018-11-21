@@ -1,0 +1,23 @@
+Instructions for runnning JUnit tests (11/21/2018)
+
+YOU MUST BE USING INTELIJ FOR THESE INSTRUCTIONS TO WORK
+
+
+RUNNING ALL TESTS:
+All tests have been updated so you only have to run the "TestSuite.java" or "TestRunner.java"
+
+    src>cs1530>test>Unit_Tests>TestSuite.java
+    src>cs1530>test>Unit_Tests>TestRunner.java
+
+"TestSuite.java" is the prefered file to run from as Intellij will pick up that is a test file and give you a break down.
+When viewing the file that you would like to run simple click the green play button along the side of the code near the line numbers on the same line as the
+class declaration. This should open a terminal at the bottom of the screen that will show you the status of all of the tests included in the suite.
+
+RUNNING A SINGLE TEST:
+All of the test files should be named "<file to test>Test.java". Just like the above method, press the green play button on the side of the code on the same line
+as the class declaration
+
+ADDING A TEST TO THE SUITE:
+In the file to test, move your cursor so that it is on the class name ex: in "public class Assignment extends Appointment" move your cursor so 
+it is inside the word "Assignment". Then select create test. Select JUnit4 from the testing library drop down, name it "<file to test>Test.java", and make sure it is being added to
+the package. Once the file has been created add it to the list in TestSuite.java at line 21.

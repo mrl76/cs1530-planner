@@ -1,0 +1,27 @@
+DEFECT 1
+SUMMARY: Database.java does not have a .add() method
+DESCRIPTION: Database does not have a .add() method so the state of the database will
+             always be empty.
+REPRODUCTION STEPS: Either run TestSuite.java or DatabaseTest.java
+EXPECTED BEHAVIOR: Database will add a UserProfile to private Map<String, UserProfile> profiles
+OBSERVED BEHAVIOR: All tests fail to add as it does not exist
+NOTES: Will need to be completed so that tests can be run
+
+DEFECT 2
+SUMMARY: No data string constructor in Timetable.java
+DESCRIPTION: The datastring constructor does not exist so testDatastringConstructor() in
+             TimetableTest.java will fail
+REPRODUCTION STEPS: Either run TestSuite.java or TimetableTest.java
+EXPECTED BEHAVIOR: Should be able to make a new Timetable object using a datastring
+OBSERVED BEHAVIOR: Test fails due to method not existing
+NOTES: Not major 
+
+DEFECT 3
+SUMMARY: No data string constructor in Course.java
+DESCRIPTION: The datastring constructor does not exist so testDatastringConstructor() in
+             CourseTest.java will fail
+REPRODUCTION STEPS: Either run TestSuite.java or CourseTest.java
+EXPECTED BEHAVIOR: Should be able to make a new Course object using a datastring
+OBSERVED BEHAVIOR: Test fails due to method not existing
+NOTES: Not major 
+
