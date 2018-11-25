@@ -12,11 +12,17 @@ import javafx.stage.Stage;
 import java.awt.*;
 
 public class Main extends Application {
+	private static Main instance;
+	
 	private Database database;
     private LoginController login;
+    
+    private UserProfile openProfile;
 	
 	@Override
 	public void init() {
+		instance = this;
+		
 		database = new Database();
 		database.load();
 		
@@ -37,10 +43,17 @@ public class Main extends Application {
     }
     
     public void openProfile(UserProfile user) {
+		this.openProfile = user;
 		//TODO
     }
 	
 	public Database getDatabase() {
 		return database;
 	}
+	
+	public static Main getInstance() {
+		return instance;
+	}
+	
+	public static UserProfile getOpenProfile() { return instance.openProfile; }
 }

@@ -4,12 +4,13 @@ import cs1530.planner.util.Utils;
 
 import java.time.DayOfWeek;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Timetable {
 	private Interval interval;
 	private int intervalSize;
-	private Date startDate, endDate;
+	private Date startDate, previousDate, endDate;
 	private boolean allDay;
 	private boolean[] days;
 	
@@ -17,19 +18,52 @@ public class Timetable {
 		this.interval = interval;
 		this.intervalSize = intervalSize;
 		this.startDate = startDate;
+		this.previousDate = startDate;
 		this.endDate = endDate;
 		this.allDay = allDay;
 		this.days = days;
 	}
 	
 	public Timetable(Date startDate) {
-		this(Interval.EVERY_N_DAYS, 1, startDate, startDate, false, new boolean[7]);
+		this(Interval.EVERY_N_DAYS, 1, startDate, Utils.now(), false, new boolean[7]);
 		Arrays.fill(days, true);
 	}
 	
 	public Timetable(String dataString) {
 		//TODO construct from valid data file string
 		
+	}
+	
+	public Date findNextTime() {
+		Date now = Utils.now();
+		Calendar c = Calendar.getInstance();
+		c.setTime(previousDate);
+		int calInt, fixedSize = intervalSize;
+		switch(interval) {
+		case EVERY_N_MONTHS:
+			calInt = Calendar.MONTH;
+			break;
+		case EVERY_N_YEARS:
+			calInt = Calendar.YEAR;
+			break;
+		default:
+			if(interval == Interval.EVERY_N_WEEKS)
+				fixedSize = intervalSize * 7;
+			calInt = Calendar.DATE;
+			break;
+		}
+		for(int i = 0; i < 400; i++) {
+			if(c.after(endDate))
+				return null;
+			if(c.after(now) && days[c.get(Calendar.DAY_OF_WEEK) - 1])
+				break;
+			c.add(calInt, fixedSize);
+		}
+		return c.getTime();
+	}
+	
+	public void ping() {
+		this.previousDate = Utils.now();
 	}
 	
 	public String toString() {

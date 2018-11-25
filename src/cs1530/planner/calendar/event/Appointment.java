@@ -4,7 +4,7 @@ import cs1530.planner.util.Utils;
 
 import java.util.Date;
 
-public abstract class Appointment implements Comparable<Appointment> {
+public class Appointment implements Comparable<Appointment> {
 	private String name, description;
 	private Date date;
 	

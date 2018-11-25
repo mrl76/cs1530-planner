@@ -13,10 +13,12 @@ import java.util.Date;
 public class Calendar {
 	private Set<Course> courses;
 	private SortedSet<Appointment> events;
+	private SortedSet<Alarm> alarms;
 	
 	public Calendar() {
 		this.courses = new HashSet<>();
 		this.events = new TreeSet<>();
+		this.alarms = new TreeSet<>();
 	}
 	
 	public Set<Course> getCourses() {
@@ -46,28 +48,22 @@ public class Calendar {
 	}
 	
 	//new
-	public SortedSet<Appointment> getAssignments(){
-		SortedSet<Appointment> assignments = new TreeSet<>();
-		
-		for(Appointment appt: events){
-			if(appt instanceof Assignment){
-				assignments.add(appt);
-			}
+	public SortedSet<Assignment> getAssignments(){
+		SortedSet<Assignment> assignments = new TreeSet<>();
+		for(Appointment a : events) {
+			if(a instanceof Assignment)
+				assignments.add((Assignment) a);
 		}
-		
 		return assignments;
 	}
 	
 	//new
-	public SortedSet<Appointment> getExams(){
-		SortedSet<Appointment> exams =  new TreeSet<>();
-		
-		for(Appointment appt: events){
-			if(appt instanceof Exam){
-				exams.add(appt);
-			}
+	public SortedSet<Exam> getExams(){
+		SortedSet<Exam> exams =  new TreeSet<>();
+		for(Appointment e : events) {
+			if(e instanceof Exam)
+				exams.add((Exam) e);
 		}
-		
 		return exams;
 	}
 	
@@ -80,32 +76,10 @@ public class Calendar {
 	*create a new identical event with a new date. Correct me if im wrong here.
 	*/
 	public void resetDate(Exam e, Date newDate){
-		//get exam info
-		String name = e.getName();
-		String description = e.getDescription();
-		Course course = e.getCourse();;
-
-		//remove exam
-		this.removeAppointment(e);
-			
-		//create new Exam and re-add to calendar
-		Exam newExam = new Exam(name, description, newDate, course);
-		this.addAppointment(newExam);
-		
+		e.setDate(newDate);
 	}
 	
 	public void resetDate(Assignment a, Date newDate){
-		//get Assignment info
-		String name = e.getName();
-		String description = e.getDescription();
-		Course course = e.getCourse();;
-
-		//remove assignment
-		this.removeAppointment(e);
-		
-		//create new assignment to readd to calendar
-		Assignment newAssignment = new Assignment(name, description, newDate,  course);
+		a.setDate(newDate);
 	}
-	
-	
 }

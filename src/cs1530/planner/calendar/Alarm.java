@@ -1,0 +1,44 @@
+package cs1530.planner.calendar;
+
+import cs1530.planner.calendar.time.Timetable;
+
+import java.util.Date;
+
+public class Alarm implements Comparable<Alarm> {
+	private Timetable timetable;
+	private int minutesWarning;
+	
+	public Alarm(Timetable timetable) {
+		this(timetable, 0);
+	}
+	
+	public Alarm(Timetable timetable, int minutesWarning) {
+		this.timetable = timetable;
+		this.minutesWarning = minutesWarning;
+	}
+	
+	public Timetable getTimetable() {
+		return timetable;
+	}
+	
+	public void setTimetable(Timetable timetable) {
+		this.timetable = timetable;
+	}
+	
+	public int getMinutesWarning() {
+		return minutesWarning;
+	}
+	
+	public void setMinutesWarning(int minutesWarning) {
+		this.minutesWarning = minutesWarning;
+	}
+	
+	@Override
+	public int compareTo(Alarm o) {
+		Date d1 = timetable.findNextTime();
+		Date d2 = o.timetable.findNextTime();
+		if(d1 == null || d2 == null)
+			return 0;
+		return d1.compareTo(d2);
+	}
+}
