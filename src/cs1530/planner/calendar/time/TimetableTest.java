@@ -16,8 +16,8 @@ public class TimetableTest {
         Date end = new Date();
         boolean[] days = new boolean[7];
         Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.EVERY_N_DAYS, 1, start, end, false, days);
-        assertTrue(testTimetable.getInterval() == Interval.EVERY_N_DAYS);
+        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
+        assertTrue(testTimetable.getInterval() == Interval.DAYS);
         assertTrue(testTimetable.getIntervalSize() == 1);
         assertSame(start, testTimetable.getStartDate());
         assertSame(end, testTimetable.getEndDate());
@@ -33,7 +33,7 @@ public class TimetableTest {
     {
         Date start = new Date();
         Timetable testTimetable = new Timetable(start);
-        assertTrue(testTimetable.getInterval() == Interval.EVERY_N_DAYS);
+        assertTrue(testTimetable.getInterval() == Interval.DAYS);
         assertTrue(testTimetable.getIntervalSize() == 1);
         assertSame(start, testTimetable.getStartDate());
         assertSame(start, testTimetable.getEndDate());
@@ -57,7 +57,7 @@ public class TimetableTest {
     {
         Date start = new Date();
         Timetable testTimetable = new Timetable(start);
-        assertTrue(testTimetable.toString().equals("EVERY_N_DAYS;t;1;t;" + start.getTime() + ";t;" + start.getTime() + ";t;false;t;true,true,true,true,true,true,true"));
+        assertTrue(testTimetable.toString().equals("DAYS;t;1;t;" + start.getTime() + ";t;" + start.getTime() + ";t;false;t;true,true,true,true,true,true,true"));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class TimetableTest {
     {
         Date start = new Date();
         Timetable testTimetable = new Timetable(start);
-        assertTrue(testTimetable.getInterval() == Interval.EVERY_N_DAYS);
+        assertTrue(testTimetable.getInterval() == Interval.DAYS);
     }
 
     @Test
@@ -73,8 +73,8 @@ public class TimetableTest {
     {
         Date start = new Date();
         Timetable testTimetable = new Timetable(start);
-        testTimetable.setInterval(Interval.EVERY_N_YEARS);
-        assertTrue(testTimetable.getInterval() == Interval.EVERY_N_YEARS);
+        testTimetable.setInterval(Interval.YEARS);
+        assertTrue(testTimetable.getInterval() == Interval.YEARS);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class TimetableTest {
         Date end = new Date();
         boolean[] days = new boolean[7];
         Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.EVERY_N_DAYS, 1, start, end, false, days);
+        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
         assertSame(start, testTimetable.getStartDate());
     }
 
@@ -112,7 +112,7 @@ public class TimetableTest {
         Date end = new Date();
         boolean[] days = new boolean[7];
         Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.EVERY_N_DAYS, 1, start, end, false, days);
+        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
         Date newStart = new Date();
         testTimetable.setStartDate(newStart);
         assertSame(newStart, testTimetable.getStartDate());
@@ -125,7 +125,7 @@ public class TimetableTest {
         Date end = new Date();
         boolean[] days = new boolean[7];
         Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.EVERY_N_DAYS, 1, start, end, false, days);
+        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
         assertSame(end, testTimetable.getEndDate());
     }
 
@@ -136,7 +136,7 @@ public class TimetableTest {
         Date end = new Date();
         boolean[] days = new boolean[7];
         Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.EVERY_N_DAYS, 1, start, end, false, days);
+        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
         Date newEnd = new Date();
         testTimetable.setEndDate(newEnd);
         assertSame(newEnd, testTimetable.getEndDate());

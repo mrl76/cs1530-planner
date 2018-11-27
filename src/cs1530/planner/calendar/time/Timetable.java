@@ -2,89 +2,91 @@ package cs1530.planner.calendar.time;
 
 import cs1530.planner.util.Utils;
 
-import java.time.DayOfWeek;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Timetable {
-	private Interval interval;
+	private Date startDate, previousDate, nextDate, endDate;
 	private int intervalSize;
-	private Date startDate, previousDate, endDate;
-	private boolean allDay;
-	private boolean[] days;
+	private Interval interval;
+	private boolean repeating, allDay;
 	
-	public Timetable(Interval interval, int intervalSize, Date startDate, Date endDate, boolean allDay, boolean[] days) {
-		this.interval = interval;
-		this.intervalSize = intervalSize;
+	public Timetable(Date startDate, Date previousDate, Date nextDate, Date endDate, boolean repeating, int intervalSize, Interval interval, boolean allDay) {
 		this.startDate = startDate;
-		this.previousDate = startDate;
+		this.previousDate = previousDate;
+		this.nextDate = nextDate;
 		this.endDate = endDate;
+		this.repeating = repeating;
+		this.intervalSize = intervalSize;
+		this.interval = interval;
 		this.allDay = allDay;
-		this.days = days;
 	}
 	
 	public Timetable(Date startDate) {
-		this(Interval.EVERY_N_DAYS, 1, startDate, Utils.now(), false, new boolean[7]);
-		Arrays.fill(days, true);
+		this(startDate, startDate, null, startDate, false, 1, Interval.DAYS, false);
 	}
 	
 	public Timetable(String dataString) {
-		//TODO construct from valid data file string
-		
+		String[] data = dataString.split(";t;");
+		assert(data.length == 8);
+		this.startDate = new Date(Long.valueOf(data[0]));
+		this.previousDate = new Date(Long.valueOf(data[1]));
+		this.nextDate = (data[2].equals("null") ? null : new Date(Long.valueOf(data[2])));
+		this.endDate = (data[3].equals("null") ? null : new Date(Long.valueOf(data[3])));
+		this.intervalSize = Integer.valueOf(data[4]);
+		this.interval = Interval.valueOf(data[5]);
+		this.repeating = Boolean.valueOf(data[6]);
+		this.allDay = Boolean.valueOf(data[7]);
 	}
 	
-	public Date findNextTime() {
+	public String toString() {
+		return Utils.toFileString(";t;",
+				startDate.getTime(),
+				previousDate.getTime(),
+				nextDate == null ? null : nextDate.getTime(),
+				endDate == null ? null : endDate.getTime(),
+				intervalSize,
+				interval.toString(),
+				repeating,
+				allDay
+		);
+	}
+	
+	public void ping() {
+		this.previousDate = Utils.now();
+		
+		//find next available event date (within 400 iterations)
+		if(!repeating) {
+			nextDate = null;
+			return;
+		}
 		Date now = Utils.now();
 		Calendar c = Calendar.getInstance();
 		c.setTime(previousDate);
 		int calInt, fixedSize = intervalSize;
 		switch(interval) {
-		case EVERY_N_MONTHS:
+		case MONTHS:
 			calInt = Calendar.MONTH;
 			break;
-		case EVERY_N_YEARS:
+		case YEARS:
 			calInt = Calendar.YEAR;
 			break;
 		default:
-			if(interval == Interval.EVERY_N_WEEKS)
+			if(interval == Interval.WEEKS)
 				fixedSize = intervalSize * 7;
 			calInt = Calendar.DATE;
 			break;
 		}
 		for(int i = 0; i < 400; i++) {
-			if(c.after(endDate))
-				return null;
-			if(c.after(now) && days[c.get(Calendar.DAY_OF_WEEK) - 1])
+			if(endDate != null && c.after(endDate)) {
+				nextDate = null;
+				return;
+			}
+			if(c.after(now))
 				break;
 			c.add(calInt, fixedSize);
 		}
-		return c.getTime();
-	}
-	
-	public void ping() {
-		this.previousDate = Utils.now();
-	}
-	
-	public String toString() {
-		String daysString = Utils.toFileString(",", days[0], days[1], days[2], days[3], days[4], days[5], days[6]);
-		return Utils.toFileString(";t;", interval.name(), intervalSize, startDate.getTime(), endDate.getTime(), allDay, daysString);
-	}
-	
-	public Interval getInterval() {
-		return interval;
-	}
-	
-	public void setInterval(Interval interval) {
-		this.interval = interval;
-	}
-	
-	public int getIntervalSize() {
-		return intervalSize;
-	}
-	
-	public void setIntervalSize(int intervalSize) {
-		this.intervalSize = intervalSize;
+		nextDate = c.getTime();
 	}
 	
 	public Date getStartDate() {
@@ -95,6 +97,10 @@ public class Timetable {
 		this.startDate = startDate;
 	}
 	
+	public Date getNextDate() {
+		return nextDate;
+	}
+	
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -103,19 +109,31 @@ public class Timetable {
 		this.endDate = endDate;
 	}
 	
+	public boolean isRepeating() {
+		return repeating;
+	}
+	
+	public int getIntervalSize() {
+		return intervalSize;
+	}
+	
+	public void setIntervalSize(int intervalSize) {
+		this.intervalSize = intervalSize;
+	}
+	
+	public Interval getInterval() {
+		return interval;
+	}
+	
+	public void setInterval(Interval interval) {
+		this.interval = interval;
+	}
+	
 	public boolean isAllDay() {
 		return allDay;
 	}
 	
 	public void setAllDay(boolean allDay) {
 		this.allDay = allDay;
-	}
-	
-	public boolean isDayOpen(DayOfWeek day) {
-		return days[day.getValue() % 7];
-	}
-	
-	public void setDay(DayOfWeek day, boolean open) {
-		days[day.getValue() % 7] = open;
 	}
 }
