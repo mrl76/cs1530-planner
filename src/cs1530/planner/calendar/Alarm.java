@@ -35,8 +35,8 @@ public class Alarm implements Comparable<Alarm> {
 	
 	@Override
 	public int compareTo(Alarm o) {
-		Date d1 = timetable.findNextTime();
-		Date d2 = o.timetable.findNextTime();
+		Date d1 = timetable.getNextDate();
+		Date d2 = o.timetable.getNextDate();
 		if(d1 == null || d2 == null)
 			return 0;
 		return d1.compareTo(d2);
