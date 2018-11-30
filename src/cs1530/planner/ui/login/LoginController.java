@@ -10,21 +10,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
-	@FXML
-	public TextField username;
-	
-	@FXML
-	public PasswordField password;
-	
-	@FXML
-	public Button createNew, confirm;
-	
-	@FXML
-	public Label error;
+	@FXML public TextField username;
+	@FXML public PasswordField password;
+	@FXML public Button createNew, confirm;
+	@FXML public Label error;
 	
 	private Main main;
 	
-	public void initialize() {
+	@FXML private void initialize() {
 		this.main = Main.getInstance();
 	}
 	
