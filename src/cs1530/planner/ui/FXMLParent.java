@@ -11,8 +11,8 @@ public class FXMLParent {
 	
 	static {
 		try {
-			LOGIN = FXMLLoader.load(Main.class.getResource("ui/login.fxml"));
-			PROFILE = FXMLLoader.load(Main.class.getResource("ui/profile.fxml"));
+			LOGIN = FXMLLoader.load(Main.class.getResource("ui/login/login.fxml"));
+			PROFILE = FXMLLoader.load(Main.class.getResource("ui/profile/profile.fxml"));
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		}

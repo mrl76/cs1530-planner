@@ -93,6 +93,6 @@ public class CourseTest {
         Date testDate = new Date();
         Timetable testTimetableTable = new Timetable(testDate);
         Course testCourse = new Course("testName", "testDescription",testTimetableTable);
-        assertTrue(testCourse.toString().equals("testName;c;testDescription;c;EVERY_N_DAYS;t;1;t;" + testDate.getTime() +";t;" + testDate.getTime() + ";t;false;t;true,true,true,true,true,true,true"));
+        assertTrue(testCourse.toString().equals("testName;c;testDescription;c;DAYS;t;1;t;" + testDate.getTime() +";t;" + testDate.getTime() + ";t;false;t;true,true,true,true,true,true,true"));
     }
 }
