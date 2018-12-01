@@ -7,49 +7,73 @@ import java.util.Arrays;
 import java.util.Date;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class TimetableTest {
     @Test
     public void testFullConstructor()
     {
-        Date start = new Date();
-        Date end = new Date();
-        boolean[] days = new boolean[7];
-        Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
-        assertTrue(testTimetable.getInterval() == Interval.DAYS);
-        assertTrue(testTimetable.getIntervalSize() == 1);
-        assertSame(start, testTimetable.getStartDate());
-        assertSame(end, testTimetable.getEndDate());
-        assertFalse(testTimetable.isAllDay());
-        for(int i = 0; i > 7; i++)
-        {
-            assertTrue(testTimetable.isDayOpen(DayOfWeek.of(i)));
-        }
+        Date mockStart = new Date();
+        Date mockEnd = new Date();
+        Date mockPrevious = new Date();
+        Date mockNext = new Date();
+        boolean testRepeating = false;
+        int testIntervalSize = 7;
+        Interval mockInterval = Interval.DAYS;
+        boolean testAllDay = true;
+        Timetable testTimetable = new Timetable(
+                mockStart,
+                mockPrevious,
+                mockNext,
+                mockEnd,
+                testRepeating,
+                testIntervalSize,
+                mockInterval,
+                testAllDay);
+
+        assertSame(testTimetable.getStartDate(), mockStart);
+        assertSame(testTimetable.getEndDate(), mockEnd);
+        assertSame(testTimetable.getPreviousDate(), mockPrevious);
+        assertSame(testTimetable.getNextDate(), mockNext);
+        assertSame(testTimetable.getInterval(), mockInterval);
+
+        assertFalse(testTimetable.isRepeating());
+        assertTrue(testTimetable.isAllDay());
+        assertTrue(testTimetable.getIntervalSize() == 7);
     }
 
     @Test
     public void testShortDateConstructor()
     {
-        Date start = new Date();
-        Timetable testTimetable = new Timetable(start);
-        assertTrue(testTimetable.getInterval() == Interval.DAYS);
-        assertTrue(testTimetable.getIntervalSize() == 1);
-        assertSame(start, testTimetable.getStartDate());
-        assertSame(start, testTimetable.getEndDate());
+        Date mockStart = new Date();
+        Timetable testTimetable = new Timetable(mockStart);
+
+        assertSame(testTimetable.getStartDate(), mockStart);
+        assertSame(testTimetable.getEndDate(), mockStart);
+        assertSame(testTimetable.getPreviousDate(), mockStart);
+        assertNull(testTimetable.getNextDate());
+        assertSame(testTimetable.getInterval(), Interval.DAYS);
+
+        assertFalse(testTimetable.isRepeating());
         assertFalse(testTimetable.isAllDay());
-        for(int i = 0; i > 7; i++)
-        {
-            assertTrue(testTimetable.isDayOpen(DayOfWeek.of(i)));
-        }
+        assertTrue(testTimetable.getIntervalSize() == 1);
     }
 
     @Test
     public void testDatastringConstructor()
     {
-        String testDatastring = "";
+        String testDatastring = "0;t;0;t;null;t;null;t;1;t;DAYS;t;false;t;false";
         Timetable testTimetable = new Timetable(testDatastring);
-        assertNull(testTimetable);
+
+        assertTrue(testTimetable.getStartDate().compareTo(new Date(0)) == 0);
+        assertNull(testTimetable.getEndDate());
+        assertTrue(testTimetable.getPreviousDate().compareTo(new Date(0)) == 0);
+        assertNull(testTimetable.getNextDate());
+        assertSame(testTimetable.getInterval(), Interval.DAYS);
+
+        assertFalse(testTimetable.isRepeating());
+        assertFalse(testTimetable.isAllDay());
+        assertTrue(testTimetable.getIntervalSize() == 1);
     }
 
     @Test
@@ -57,7 +81,7 @@ public class TimetableTest {
     {
         Date start = new Date();
         Timetable testTimetable = new Timetable(start);
-        assertTrue(testTimetable.toString().equals("DAYS;t;1;t;" + start.getTime() + ";t;" + start.getTime() + ";t;false;t;true,true,true,true,true,true,true"));
+        assertTrue(testTimetable.toString().equals(start.getTime() + ";t;" + start.getTime() + ";t;null;t;" + start.getTime() + ";t;" + 1 + ";t;DAYS;t;false;t;false"));
     }
 
     @Test
@@ -97,22 +121,46 @@ public class TimetableTest {
     @Test
     public void testGetStartDate()
     {
-        Date start = new Date();
-        Date end = new Date();
-        boolean[] days = new boolean[7];
-        Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
-        assertSame(start, testTimetable.getStartDate());
+        Date mockStart = new Date();
+        Date mockEnd = new Date();
+        Date mockPrevious = new Date();
+        Date mockNext = new Date();
+        boolean testRepeating = false;
+        int testIntervalSize = 7;
+        Interval mockInterval = Interval.DAYS;
+        boolean testAllDay = true;
+        Timetable testTimetable = new Timetable(
+                mockStart,
+                mockPrevious,
+                mockNext,
+                mockEnd,
+                testRepeating,
+                testIntervalSize,
+                mockInterval,
+                testAllDay);
+        assertSame(mockStart, testTimetable.getStartDate());
     }
 
     @Test
     public void testSetStartDate()
     {
-        Date start = new Date();
-        Date end = new Date();
-        boolean[] days = new boolean[7];
-        Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
+        Date mockStart = new Date();
+        Date mockEnd = new Date();
+        Date mockPrevious = new Date();
+        Date mockNext = new Date();
+        boolean testRepeating = false;
+        int testIntervalSize = 7;
+        Interval mockInterval = Interval.DAYS;
+        boolean testAllDay = true;
+        Timetable testTimetable = new Timetable(
+                mockStart,
+                mockPrevious,
+                mockNext,
+                mockEnd,
+                testRepeating,
+                testIntervalSize,
+                mockInterval,
+                testAllDay);
         Date newStart = new Date();
         testTimetable.setStartDate(newStart);
         assertSame(newStart, testTimetable.getStartDate());
@@ -121,22 +169,46 @@ public class TimetableTest {
     @Test
     public void testGetEndDate()
     {
-        Date start = new Date();
-        Date end = new Date();
-        boolean[] days = new boolean[7];
-        Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
-        assertSame(end, testTimetable.getEndDate());
+        Date mockStart = new Date();
+        Date mockEnd = new Date();
+        Date mockPrevious = new Date();
+        Date mockNext = new Date();
+        boolean testRepeating = false;
+        int testIntervalSize = 7;
+        Interval mockInterval = Interval.DAYS;
+        boolean testAllDay = true;
+        Timetable testTimetable = new Timetable(
+                mockStart,
+                mockPrevious,
+                mockNext,
+                mockEnd,
+                testRepeating,
+                testIntervalSize,
+                mockInterval,
+                testAllDay);
+        assertSame(mockEnd, testTimetable.getEndDate());
     }
 
     @Test
     public void testSetEndDate()
     {
-        Date start = new Date();
-        Date end = new Date();
-        boolean[] days = new boolean[7];
-        Arrays.fill(days,true);
-        Timetable testTimetable = new Timetable(Interval.DAYS, 1, start, end, false, days);
+        Date mockStart = new Date();
+        Date mockEnd = new Date();
+        Date mockPrevious = new Date();
+        Date mockNext = new Date();
+        boolean testRepeating = false;
+        int testIntervalSize = 7;
+        Interval mockInterval = Interval.DAYS;
+        boolean testAllDay = true;
+        Timetable testTimetable = new Timetable(
+                mockStart,
+                mockPrevious,
+                mockNext,
+                mockEnd,
+                testRepeating,
+                testIntervalSize,
+                mockInterval,
+                testAllDay);
         Date newEnd = new Date();
         testTimetable.setEndDate(newEnd);
         assertSame(newEnd, testTimetable.getEndDate());
@@ -157,22 +229,5 @@ public class TimetableTest {
         Timetable testTimetable = new Timetable(start);
         testTimetable.setAllDay(true);
         assertTrue(testTimetable.isAllDay());
-    }
-
-    @Test
-    public void testIsDayOpen()
-    {
-        Date start = new Date();
-        Timetable testTimetable = new Timetable(start);
-        assertTrue(testTimetable.isDayOpen(DayOfWeek.of(1)));
-    }
-
-    @Test
-    public void testSetDay()
-    {
-        Date start = new Date();
-        Timetable testTimetable = new Timetable(start);
-        testTimetable.setDay(DayOfWeek.of(1), false);
-        assertFalse(testTimetable.isDayOpen(DayOfWeek.of(1)));
     }
 }
