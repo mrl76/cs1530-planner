@@ -116,6 +116,8 @@ public class Timetable {
 	public int getIntervalSize() {
 		return intervalSize;
 	}
+
+	public Date getPreviousDate(){ return previousDate; }
 	
 	public void setIntervalSize(int intervalSize) {
 		this.intervalSize = intervalSize;
