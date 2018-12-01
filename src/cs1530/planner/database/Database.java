@@ -23,12 +23,12 @@ public class Database {
 			saveProfile(profile);
 	}
 	
-	private void saveProfile(UserProfile profile) {
+	public void saveProfile(UserProfile profile) {
 		File profileDir = new File("profile_" + profile.getUsername());
 		while(!profileDir.exists()) {
 			if(!profileDir.mkdir()) {
 				System.out.println("Could not save profile \'" + profile.getUsername() + "\'");
-				break;
+				return;
 			}
 		}
 		Calendar calendar = profile.getCalendar();
@@ -72,15 +72,14 @@ public class Database {
 			for(File f : profileData) {
 				try {
 					scanner = new Scanner(f);
-					switch (f.getName()) {
-					case "courses.txt":
+					String filename = f.getName();
+					if(filename.equals("courses.txt")) {
 						//add all courses in courses.txt
 						while(scanner.hasNextLine()) {
 							String line = scanner.nextLine();
 							if(!line.isEmpty())
 								next.getCalendar().addCourse(new Course(line));
 						}
-						break;
 						//TODO add more cases, one for each file type
 					}
 				} catch(IOException ex) {
@@ -97,6 +96,7 @@ public class Database {
 	public UserProfile createProfile(String username, String password) {
 		UserProfile user = new UserProfile(username, password);
 		profiles.put(username, user);
+		saveProfile(user);
 		return user;
 	}
 }

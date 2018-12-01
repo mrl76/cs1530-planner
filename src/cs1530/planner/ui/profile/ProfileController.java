@@ -25,6 +25,7 @@ public class ProfileController {
 		Appointment event = new Appointment("placeholder"); //new event window returns new event
 		profile.getCalendar().addAppointment(event);
 		refreshDisplay();
+		Main.saveOpenProfile();
 	}
 	
 	public void onFilterButton() {

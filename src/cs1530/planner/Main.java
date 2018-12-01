@@ -52,4 +52,9 @@ public class Main extends Application {
 	}
 	
 	public static UserProfile getOpenProfile() { return instance.openProfile; }
+	
+	public static void saveOpenProfile() {
+		if(instance.openProfile != null)
+			instance.database.saveProfile(instance.openProfile);
+	}
 }
