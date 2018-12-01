@@ -40,7 +40,10 @@ public class Main extends Application {
     
     public void openProfile(UserProfile user) {
 		this.openProfile = user;
-		//TODO
+		Stage window = new Stage();
+		window.setTitle(user.getUsername() + "'s Calendar");
+		window.setScene(new Scene(FXMLParent.PROFILE));
+		window.show();
     }
 	
 	public Database getDatabase() {

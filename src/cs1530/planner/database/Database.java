@@ -94,6 +94,8 @@ public class Database {
 	}
 	
 	public UserProfile createProfile(String username, String password) {
+		if (profiles.containsKey(username))
+			return null;
 		UserProfile user = new UserProfile(username, password);
 		profiles.put(username, user);
 		saveProfile(user);
