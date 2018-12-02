@@ -24,9 +24,12 @@ public class CourseTest {
     @Test
     public void testDataStringConstructor()
     {
-        String testDatastring = "";
+        String testDatastring = "testName;c;testDescription;c;0;t;0;t;null;t;null;t;1;t;DAYS;t;false;t;false";
         Course testCourse = new Course(testDatastring);
-        assertNull(testCourse);
+        Timetable testTimetable = new Timetable("0;t;0;t;null;t;null;t;1;t;DAYS;t;false;t;false");
+        assertTrue(testCourse.getName().equals("testName"));
+        assertTrue(testCourse.getDescription().equals("testDescription"));
+        assertTrue(testCourse.getTimetable().toString().equals(testTimetable.toString()));
     }
 
     @Test
@@ -91,8 +94,8 @@ public class CourseTest {
     public void testToString()
     {
         Date testDate = new Date();
-        Timetable testTimetableTable = new Timetable(testDate);
+        Timetable testTimetableTable = new Timetable("0;t;0;t;null;t;null;t;1;t;DAYS;t;false;t;false");
         Course testCourse = new Course("testName", "testDescription",testTimetableTable);
-        assertTrue(testCourse.toString().equals("testName;c;testDescription;c;DAYS;t;1;t;" + testDate.getTime() +";t;" + testDate.getTime() + ";t;false;t;true,true,true,true,true,true,true"));
+        assertTrue(testCourse.toString().equals("testName;c;testDescription;c;0;t;0;t;null;t;null;t;1;t;DAYS;t;false;t;false"));
     }
 }
