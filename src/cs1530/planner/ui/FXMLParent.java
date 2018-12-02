@@ -10,6 +10,7 @@ public class FXMLParent {
 	private static final String LOGIN = "ui/login/login.fxml";
 	private static final String PROFILE = "ui/profile/profile.fxml";
 	private static final String NEWEVENT = "ui/newevent/newevent.fxml";
+	private static final String NEWCOURSE = "ui/newcourse/newcourse.fxml";
 	
 	public static Parent getLogin() {
 		try {
@@ -32,6 +33,15 @@ public class FXMLParent {
 	public static Parent getNewEvent() {
 		try {
 			return FXMLLoader.load(Main.class.getResource(NEWEVENT));
+		} catch(IOException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static Parent getNewCourse() {
+		try {
+			return FXMLLoader.load(Main.class.getResource(NEWCOURSE));
 		} catch(IOException ex) {
 			ex.printStackTrace();
 			return null;
