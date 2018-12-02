@@ -347,11 +347,9 @@ public Date getEndDate()
 public void setEndDate(Date endDate)
 public boolean isAllDay()
 public void setAllDay(boolean allDay)
-public boolean isDayOpen(DayOfWeek day)
-public void setDay(DayOfWeek day, boolean open)
 
 1) IDENTIFIER:      case-timetable-full-constructor
-   DESCRIPTION:     This test verifies that when the full Timetable contructor creates a new 
+   DESCRIPTION:     This test verifies that when the full Timetable constructor creates a new
                     Timetable object using the passed in parameters
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
@@ -476,26 +474,7 @@ public void setDay(DayOfWeek day, boolean open)
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Timetable class
    POSTCONDITIONS:  This method should change the allDay variable of the Timetable object to 
-                    the passed in value 
-
-15)IDENTIFIER:      case-timetable-is-day-open
-   DESCRIPTION:     This test verifies that the isDayOpen() method returns whether or not a
-                    day is open within the Timetable
-   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
-                    handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
-   POSTCONDITIONS:  This method should return true if the day specified by the passed in
-                    argument is free, otherwise it should return false
-
-
-16)IDENTIFIER:      case-timetable-set-day
-   DESCRIPTION:     This test verifies that when the setDay() method is called the specified day's
-                    value is set to the passed in value
-   PRECONDITIONS:   This test will be part of automated unit testing all setup will be
-                    handled with the test program
-   EXECUTION STEPS: This test will run in the unit test program for the Timetable class
-   POSTCONDITIONS:  This method should change the index in the days array within the Timetable object
-                    to the passed boolean open.
+                    the passed in value
 
 ----------------------------------------------------------------------------------------------------
 Calendar.java(11/17/2018)

@@ -19,5 +19,5 @@ as the class declaration
 
 ADDING A TEST TO THE SUITE:
 In the file to test, move your cursor so that it is on the class name ex: in "public class Assignment extends Appointment" move your cursor so 
-it is inside the word "Assignment". Then select create test. Select JUnit4 from the testing library drop down, name it "<file to test>Test.java", and make sure it is being added to
+it is inside the word "Assignment" and press alt+enter. Then select create test. Select JUnit4 from the testing library drop down, name it "<file to test>Test.java", and make sure it is being added to
 the package. Once the file has been created add it to the list in TestSuite.java at line 21.
