@@ -7,15 +7,34 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 public class FXMLParent {
-	public static Parent LOGIN, PROFILE, NEWEVENT;
+	private static final String LOGIN = "ui/login/login.fxml";
+	private static final String PROFILE = "ui/profile/profile.fxml";
+	private static final String NEWEVENT = "ui/newevent/newevent.fxml";
 	
-	static {
+	public static Parent getLogin() {
 		try {
-			LOGIN = FXMLLoader.load(Main.class.getResource("ui/login/login.fxml"));
-			PROFILE = FXMLLoader.load(Main.class.getResource("ui/profile/profile.fxml"));
-			NEWEVENT = FXMLLoader.load(Main.class.getResource("ui/newevent/newevent.fxml"));
+			return FXMLLoader.load(Main.class.getResource(LOGIN));
 		} catch(IOException ex) {
 			ex.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static Parent getProfile() {
+		try {
+			return FXMLLoader.load(Main.class.getResource(PROFILE));
+		} catch(IOException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static Parent getNewEvent() {
+		try {
+			return FXMLLoader.load(Main.class.getResource(NEWEVENT));
+		} catch(IOException ex) {
+			ex.printStackTrace();
+			return null;
 		}
 	}
 }

@@ -28,7 +28,7 @@ public class Main extends Application {
 	@Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(FXMLParent.LOGIN, 300, 100));
+        primaryStage.setScene(new Scene(FXMLParent.getLogin(), 300, 100));
         primaryStage.show();
 	
 	    Utils.notification("Test", "This is a test message!", TrayIcon.MessageType.INFO);
@@ -42,7 +42,7 @@ public class Main extends Application {
 		this.openProfile = user;
 		Stage window = new Stage();
 		window.setTitle(user.getUsername() + "'s Calendar");
-		window.setScene(new Scene(FXMLParent.PROFILE));
+		window.setScene(new Scene(FXMLParent.getProfile()));
 		window.show();
     }
 	
