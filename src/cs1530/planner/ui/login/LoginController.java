@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 public class LoginController {
 	@FXML public TextField username;
 	@FXML public PasswordField password;
