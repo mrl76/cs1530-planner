@@ -1,0 +1,91 @@
+Test Plan for Login Page
+Michael Long
+Created: 12/2/2018
+Last Updated: 12/2/2018
+
+Classes to test:
+-LoginController.java
+-login.fxml (only included as a frequently referenced file)
+
+----------------------------------------------------------------------------------------------------
+LoginController.java (12/2/2018)
+
+Methods:
+public void onCreateClick()
+public void onConfirmClick()
+
+1) IDENTIFIER:      case-create-click-happy-path
+   DESCRIPTION:     This test verifies that if a username that does not already exist
+                    is entered with a password by clicking the create click button,
+                    then a new user is created
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This method will create a new user and opens their profile page
+
+2) IDENTIFIER:      case-create-click-no-username
+   DESCRIPTION:     This test verifies that if no username is entered and the create click button is clicked,
+                    then an error is displayed
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This method should display "Please fill out username and password." in an error
+
+3) IDENTIFIER:      case-create-click-no-password
+   DESCRIPTION:     This test verifies that if no password is entered and the create click button is clicked,
+                    then an error is displayed
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This method should display "Please fill out username and password." in an error
+
+4) IDENTIFIER:      case-create-click-user-exists
+   DESCRIPTION:     This test verifies that if a username that already exists is entered
+                    and the create click button is clicked, then an error is displayed
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This method should display "A profile under that username already exists." in an error
+
+5) IDENTIFIER:      case-confim-click-happy-path
+   DESCRIPTION:     This test verifies that if a username that exists
+                    is entered with the password that is associated with the entered username
+                    by clicking the create click button, then the page is redirected to the
+                    user's page
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This method should redirect to the specified user's page
+
+6) IDENTIFIER:      case-confim-click-no-user-found
+   DESCRIPTION:     This test verifies that when a username that does not exist in the database
+                    is entered and the confirm click button is pressed, then an error is displayed
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This message should display "Username or password is incorrect." in a an error
+
+7) IDENTIFIER:      case-confim-click-incorrect-password
+   DESCRIPTION:     This test verifies that when a username that exists in the database
+                    is entered but the entered password is does not match the user's password,
+                    then an error is displayed
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This message should display "Username or password is incorrect." in a an error
+
+2) IDENTIFIER:      case-confirm-click-no-username
+   DESCRIPTION:     This test verifies that if no username is entered and the confirm click button is clicked,
+                    then an error is displayed
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This method should display "Please fill out username and password." in an error
+
+3) IDENTIFIER:      case-confirm-click-no-password
+   DESCRIPTION:     This test verifies that if no password is entered and the confirm click button is clicked,
+                    then an error is displayed
+   PRECONDTIONS:    This test will be part of automated unit testing all setup will be
+                    handled with the test program
+   EXECUTION STEPS: This test will run in the unit test program for the LoginController class
+   POSTCONDITIONS:  This method should display "Please fill out username and password." in an error

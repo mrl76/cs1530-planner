@@ -16,6 +16,8 @@ public class Main extends Application {
 	private Database database;
     
     private UserProfile openProfile;
+
+    private Scene scene;
 	
 	@Override
 	public void init() {
@@ -28,7 +30,7 @@ public class Main extends Application {
 	@Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(FXMLParent.getLogin(), 300, 100));
+        primaryStage.setScene(scene = new Scene(FXMLParent.getLogin(), 300, 100));
         primaryStage.show();
 	
 	    Utils.notification("Test", "This is a test message!", TrayIcon.MessageType.INFO);
@@ -42,7 +44,7 @@ public class Main extends Application {
 		this.openProfile = user;
 		Stage window = new Stage();
 		window.setTitle(user.getUsername() + "'s Calendar");
-		window.setScene(new Scene(FXMLParent.getProfile()));
+		window.setScene(scene = new Scene(FXMLParent.getProfile()));
 		window.show();
     }
 	
@@ -52,6 +54,11 @@ public class Main extends Application {
 	
 	public static Main getInstance() {
 		return instance;
+	}
+
+	public Scene getScene()
+	{
+		return scene;
 	}
 	
 	public static UserProfile getOpenProfile() { return instance.openProfile; }

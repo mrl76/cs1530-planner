@@ -12,7 +12,7 @@ import cs1530.planner.calendar.UserProfileTest;
 
 import cs1530.planner.database.DatabaseTest;
 
-import cs1530.planner.MainFXMLTest;
+//import cs1530.planner.MainFXMLTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -28,7 +28,7 @@ import org.junit.runners.Suite;
         CourseTest.class,
         UserProfileTest.class,
         DatabaseTest.class,
-        MainFXMLTest.class
+        //MainFXMLTest.class
 })
 public class TestSuite {
 
