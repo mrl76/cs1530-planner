@@ -7,12 +7,13 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 public class FXMLParent {
-	public static Parent LOGIN, PROFILE;
+	public static Parent LOGIN, PROFILE, NEWEVENT;
 	
 	static {
 		try {
 			LOGIN = FXMLLoader.load(Main.class.getResource("ui/login/login.fxml"));
 			PROFILE = FXMLLoader.load(Main.class.getResource("ui/profile/profile.fxml"));
+			NEWEVENT = FXMLLoader.load(Main.class.getResource("ui/newevent/newevent.fxml"));
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		}
