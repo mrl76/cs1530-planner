@@ -27,4 +27,5 @@ public class Assignment extends Appointment {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+    
 }

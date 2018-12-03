@@ -1,8 +1,8 @@
 package cs1530.test.Unit_Tests;
 
-//import cs1530.planner.calendar.event.AppointementTest;
-//import cs1530.planner.calendar.event.AssignmentTest;
-//import cs1530.planner.calendar.event.ExamTest;
+import cs1530.planner.calendar.event.AppointementTest;
+import cs1530.planner.calendar.event.AssignmentTest;
+import cs1530.planner.calendar.event.ExamTest;
 import cs1530.planner.calendar.time.TimetableTest;
 //import cs1530.planner.calendar.CalendarTest;
 import cs1530.planner.calendar.CourseTest;
@@ -20,8 +20,8 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses({
         AppointmentTest.class,
-        //AssignmentTest.class,
-        //ExamTest.class,
+        AssignmentTest.class,
+        ExamTest.class,
         TimetableTest.class,
         //CalendarTest.class,
         CourseTest.class,
