@@ -1,7 +1,7 @@
 package cs1530.planner.ui.newcourse;
 
-import cs1530.planner.Main;
 import cs1530.planner.calendar.Course;
+import cs1530.planner.calendar.UserProfile;
 import cs1530.planner.calendar.time.Interval;
 import cs1530.planner.calendar.time.Timetable;
 import javafx.collections.FXCollections;
@@ -25,6 +25,8 @@ public class NewCourseController {
 	@FXML private ComboBox<String> intervalBox;
 	@FXML private TextArea description;
 	
+	private UserProfile profile;
+	
 	@FXML private void initialize() {
 		ObservableList<Integer> hours = FXCollections.observableArrayList();
 		for(int i = 1; i <= 12; i++) hours.add(i);
@@ -36,6 +38,10 @@ public class NewCourseController {
 		meridian.setItems(meridians);
 		ObservableList<String> intervals = FXCollections.observableArrayList("Days", "Weeks", "Months", "Years");
 		intervalBox.setItems(intervals);
+	}
+	
+	public void init(UserProfile profile) {
+		this.profile = profile;
 	}
 	
 	public void onConfirm() {
@@ -54,6 +60,6 @@ public class NewCourseController {
 		Interval interval = Interval.valueOf(intervalBox.getValue().toUpperCase());
 		Timetable t = new Timetable(startDate, startDate, null, startDate, repeatBox.isSelected(), intervalSize, interval, false);
 		Course r = new Course(courseName, courseDesc, t);
-		Main.getOpenProfile().getCalendar().addCourse(r);
+		profile.getCalendar().addCourse(r);
 	}
 }

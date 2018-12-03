@@ -1,23 +1,18 @@
 package cs1530.planner;
 
-import cs1530.planner.calendar.UserProfile;
 import cs1530.planner.database.Database;
-import cs1530.planner.ui.FXMLParent;
-import cs1530.planner.util.Utils;
+import cs1530.planner.ui.UIManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.*;
+import java.net.URL;
 
 public class Main extends Application {
 	private static Main instance;
-	
 	private Database database;
-    
-    private UserProfile openProfile;
-
-    private Scene scene;
+	private UIManager uiManager;
+    private Stage stage;
 	
 	@Override
 	public void init() {
@@ -25,46 +20,44 @@ public class Main extends Application {
 		
 		database = new Database();
 		database.load();
+		uiManager = new UIManager();
 	}
 	
 	@Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(scene = new Scene(FXMLParent.getLogin(), 300, 100));
-        primaryStage.show();
-	
-	    Utils.notification("Test", "This is a test message!", TrayIcon.MessageType.INFO);
+		stage = primaryStage;
+		stage.setOnCloseRequest((event) -> {
+			database.save();
+			System.exit(0);
+		});
+		uiManager.showLogin();
+		stage.show();
     }
 
     public static void main(String[] args) {
+	    //fix anti-aliasing for small text
+	    System.setProperty("prism.lcdtext", "false");
         launch(args);
     }
-    
-    public void openProfile(UserProfile user) {
-		this.openProfile = user;
-		Stage window = new Stage();
-		window.setTitle(user.getUsername() + "'s Calendar");
-		window.setScene(scene = new Scene(FXMLParent.getProfile()));
-		window.show();
-    }
-	
-	public Database getDatabase() {
-		return database;
-	}
 	
 	public static Main getInstance() {
 		return instance;
 	}
-
-	public Scene getScene()
-	{
-		return scene;
+	
+	public static Database getDatabase() {
+		return instance.database;
 	}
 	
-	public static UserProfile getOpenProfile() { return instance.openProfile; }
+	public static UIManager getUIManager() {
+		return instance.uiManager;
+	}
 	
-	public static void saveOpenProfile() {
-		if(instance.openProfile != null)
-			instance.database.saveProfile(instance.openProfile);
+	public static URL getResource(String path) {
+		return instance.getClass().getResource(path);
+	}
+	
+	public static void setScene(Scene s, String title) {
+		instance.stage.setScene(s);
+		instance.stage.setTitle(title);
 	}
 }
