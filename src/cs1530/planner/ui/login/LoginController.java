@@ -2,13 +2,11 @@ package cs1530.planner.ui.login;
 
 import cs1530.planner.Main;
 import cs1530.planner.calendar.UserProfile;
-import cs1530.planner.login.Login;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 
 public class LoginController {
@@ -17,23 +15,17 @@ public class LoginController {
 	@FXML public Button createNew, confirm;
 	@FXML public Label error;
 	
-	private Main main;
-	
-	@FXML private void initialize() {
-		this.main = Main.getInstance();
-	}
-	
 	public void onCreateClick() {
 		if(username.getText().isEmpty() || password.getText().isEmpty()) {
 			error.setText("Please fill out username and password.");
 			return;
 		}
-		UserProfile user = main.getDatabase().createProfile(username.getText(), password.getText());
+		UserProfile user = Main.getDatabase().createProfile(username.getText(), password.getText());
 		if(user == null) {
 			error.setText("A profile under that username already exists.");
 			return;
 		}
-		main.openProfile(user);
+		Main.getUIManager().showProfile(user);
 	}
 	
 	public void onConfirmClick() {
@@ -41,13 +33,12 @@ public class LoginController {
 			error.setText("Please fill out username and password.");
 			return;
 		}
-		UserProfile user = Login.userLogin(username.getText(), password.getText(), main.getDatabase());
-		if(user == null)
-			error.setText("Username or password is incorrect.");
-		else {
+		UserProfile user = Main.getDatabase().getProfile(username.getText());
+		if(user != null && user.verifyPassword(password.getText())) {
 			error.setText("");
-			main.openProfile(user);
-			((Stage) username.getScene().getWindow()).close();
+			Main.getUIManager().showProfile(user);
 		}
+		else
+			error.setText("Username or password is incorrect.");
 	}
 }
