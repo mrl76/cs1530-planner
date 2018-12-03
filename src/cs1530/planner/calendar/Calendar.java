@@ -36,6 +36,11 @@ public class Calendar {
 	public SortedSet<Appointment> getEvents() {
 		return events;
 	}
+    
+    //new
+    public SortedSet<Alarm> getAlarms() {
+        return alarms;
+    }
 	
 	//new
 	public void addAppointment(Appointment a){
