@@ -19,7 +19,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-        //AppointmentTest.class,
+        AppointmentTest.class,
         //AssignmentTest.class,
         //ExamTest.class,
         TimetableTest.class,
