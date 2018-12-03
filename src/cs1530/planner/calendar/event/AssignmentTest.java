@@ -52,7 +52,7 @@ public class AssignmentTest {
         Assignment testA = new Assignment("testA");
         
         assertTrue(testA.getName().equals("testA"));
-        assertTrue(testA.getDescription().equals(""))
+        assertTrue(testA.getDescription().equals(""));
     }
     
     
@@ -154,11 +154,11 @@ public class AssignmentTest {
         Course testCourse = new Course("testName", "testDescription",testTimetable);
         Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
         
-        assertTrue(testA.getDate(),testDate);
+        assertSame(testA.getDate(),testDate);
         
         Date testDate2 = new Date();
         testA.setDate(testDate2);
-        assertTrue(testA.getDate(),testDate2);
+        assertSame(testA.getDate(),testDate2);
     }
 
     

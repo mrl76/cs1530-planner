@@ -51,7 +51,7 @@ public class ExamTest {
         Exam testA = new Exam("testA");
         
         assertTrue(testA.getName().equals("testA"));
-        assertTrue(testA.getDescription().equals(""))
+        assertTrue(testA.getDescription().equals(""));
     }
     
     
@@ -153,11 +153,11 @@ public class ExamTest {
         Course testCourse = new Course("testName", "testDescription",testTimetable);
         Exam testA = new Exam("testA","Hello",testDate,testCourse);
         
-        assertTrue(testA.getDate(),testDate);
+        assertSame(testA.getDate(),testDate);
         
         Date testDate2 = new Date();
         testA.setDate(testDate2);
-        assertTrue(testA.getDate(),testDate2);
+        assertSame(testA.getDate(),testDate2);
     }
     
 }//end of exam test
