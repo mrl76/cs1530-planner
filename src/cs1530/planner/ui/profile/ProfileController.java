@@ -2,6 +2,7 @@ package cs1530.planner.ui.profile;
 
 import cs1530.planner.Main;
 import cs1530.planner.calendar.UserProfile;
+import cs1530.planner.calendar.event.Appointment;
 import cs1530.planner.calendar.event.EventType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +23,7 @@ public class ProfileController {
 		addBox.setItems(choices);
 		addBox.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> {
-					if((oldValue == null || oldValue.isEmpty()) && newValue != null && !newValue.isEmpty())
+					if(newValue != null && !newValue.isEmpty())
 						onAdd();
 				}
 		);
@@ -46,6 +47,8 @@ public class ProfileController {
 	}
 	
 	private void refreshDisplay() {
-		//TODO create display
+		eventBox.getChildren().clear();
+		for(Appointment event : profile.getCalendar().getEvents())
+			eventBox.getChildren().add(Main.getUIManager().getEventPane(event));
 	}
 }
