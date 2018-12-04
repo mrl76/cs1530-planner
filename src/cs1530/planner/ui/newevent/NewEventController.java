@@ -5,6 +5,7 @@ import cs1530.planner.calendar.event.Appointment;
 import cs1530.planner.calendar.event.Assignment;
 import cs1530.planner.calendar.event.EventType;
 import cs1530.planner.calendar.event.Exam;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -73,5 +75,6 @@ public class NewEventController {
 			a = new Exam(eventName, eventDesc, eventDate, null);
 			profile.getCalendar().addAppointment(a);
 		}
+		Platform.runLater(() -> ((Stage) name.getScene().getWindow()).close());
 	}
 }
