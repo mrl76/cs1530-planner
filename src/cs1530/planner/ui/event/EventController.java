@@ -3,9 +3,11 @@ package cs1530.planner.ui.event;
 import cs1530.planner.calendar.event.Appointment;
 import cs1530.planner.calendar.event.Assignment;
 import cs1530.planner.calendar.event.Exam;
+import cs1530.planner.ui.UIManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 import java.text.SimpleDateFormat;
 
@@ -29,10 +31,11 @@ public class EventController {
 		if(event.getAlarm() != null) {
 			if(event.getAlarm().isEnabled()) {
 				event.getAlarm().setEnabled(false);
-				//TODO change alarm button
+				alarmButton.setGraphic(new ImageView(UIManager.BELL_OFF));
 			}
 			else {
 				event.getAlarm().setEnabled(true);
+				alarmButton.setGraphic(new ImageView(UIManager.BELL));
 			}
 		}
 	}

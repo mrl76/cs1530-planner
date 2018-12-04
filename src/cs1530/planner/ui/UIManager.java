@@ -10,6 +10,7 @@ import cs1530.planner.ui.newevent.NewEventController;
 import cs1530.planner.ui.profile.ProfileController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UIManager {
+	public static final Image BELL = new Image("util/bell.png");
+	public static final Image BELL_OFF = new Image("util/bell_off.png");
+	
 	private static final String LOGIN = "login/login.fxml";
 	private static final String PROFILE = "profile/profile.fxml";
 	private static final String NEWEVENT = "newevent/newevent.fxml";
