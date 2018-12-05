@@ -8,6 +8,7 @@ import cs1530.planner.ui.event.EventController;
 import cs1530.planner.ui.newcourse.NewCourseController;
 import cs1530.planner.ui.newevent.NewEventController;
 import cs1530.planner.ui.profile.ProfileController;
+import cs1530.planner.util.Utils;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class UIManager {
@@ -95,6 +97,25 @@ public class UIManager {
 			g.setTitle("Add New Course");
 			g.setScene(s);
 			g.showAndWait();
+		} catch(IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public void showNewAlarm(UserProfile profile) {
+		try {
+			FXMLLoader l = new FXMLLoader(getClass().getResource(NEWEVENT));
+			Platform.runLater(() -> {
+				NewEventController c = l.getController();
+				c.init(profile, EventType.ALARM);
+			});
+			Pane p = l.load();
+			Scene s = new Scene(p);
+			Stage g = new Stage();
+			g.setTitle("Add New Alarm");
+			g.setScene(s);
+			g.showAndWait();
+			Utils.notification("Alarm", "Test alarm notification", TrayIcon.MessageType.INFO);
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		}
