@@ -11,11 +11,9 @@ public class UserProfileTest {
     @Test
     public void testFullConstructor()
     {
-        Calendar testCal = new Calendar();
-        UserProfile testUserProfile = new UserProfile("user1", "pass1", testCal);
+        UserProfile testUserProfile = new UserProfile("user1", "pass1");
         assertTrue(testUserProfile.getUsername().equals("user1"));
         assertTrue(testUserProfile.verifyPassword("pass1"));
-        assertSame(testUserProfile.getCalendar(), testCal);
     }
 
     @Test
@@ -38,16 +36,15 @@ public class UserProfileTest {
     @Test
     public void testGetCalendar()
     {
-        Calendar testCal = new Calendar();
-        UserProfile testUserProfile = new UserProfile("user1", "pass1", testCal);
-        assertSame(testUserProfile.getCalendar(), testCal);
+        UserProfile testUserProfile = new UserProfile("user1", "pass1");
+        Calendar testCal = testUserProfile.getCalendar();
+        assertNotNull(testCal);
     }
 
     @Test
     public void testGetUsername()
     {
-        Calendar testCal = new Calendar();
-        UserProfile testUserProfile = new UserProfile("user1", "pass1", testCal);
+        UserProfile testUserProfile = new UserProfile("user1", "pass1");
         assertTrue(testUserProfile.getUsername().equals("user1"));
     }
 
@@ -77,31 +74,6 @@ public class UserProfileTest {
     {
         UserProfile testUserProfile = new UserProfile("user1");
         assertFalse(testUserProfile.getUsername().equals("user2"));
-    }
-
-    @Test
-    public void testResetUsername()
-    {
-        UserProfile testUserProfile = new UserProfile("user1");
-        testUserProfile.resetUserName("user2");
-        assertTrue(testUserProfile.getUsername().equals("user2"));
-    }
-
-    // bad implementation of method under test, should not have to pass in old password
-    @Test
-    public void testResetPasswordEqual()
-    {
-        UserProfile testUserProfile = new UserProfile("user1", "pass1");
-        assertTrue(testUserProfile.resetPassword("pass1", "pass1"));
-        assertTrue(testUserProfile.verifyPassword("pass1"));
-    }
-
-    @Test
-    public void testResetPasswordNotEqual()
-    {
-        UserProfile testUserProfile = new UserProfile("user1", "pass1");
-        assertFalse(testUserProfile.resetPassword("pass2", "pass2"));
-        assertTrue(testUserProfile.verifyPassword("pass1"));
     }
 
     @Test

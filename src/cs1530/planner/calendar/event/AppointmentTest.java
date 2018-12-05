@@ -20,14 +20,15 @@ public class AppointmentTest {
         assertTrue(testAppointment.getDescription().equals("TESTdescription"));
         assertSame(testAppointment.getDate(), testDate);
     }
-    
-    //Test partial constructor
+
     @Test
-    public void testStringConstructor()
+    public void testDatastringConstructor()
     {
-        Appointment testAppointment = new Appointment("TEST1");
-        assertTrue(testAppointment.getName().equals("TEST1"));
-        assertTrue(testAppointment.getDescription().equals(""));
+        String datastring = "testName;a;testDescription;a;0";
+        Appointment testA = new Appointment(datastring);
+        assertTrue(testA.getName().equals("testName"));
+        assertTrue(testA.getDescription().equals("testDescription"));
+        assertTrue(testA.getDate().compareTo(new Date(0)) == 0);
     }
     
     
