@@ -1,6 +1,8 @@
 package cs1530.planner.calendar;
 
 import cs1530.planner.calendar.time.Timetable;
+import cs1530.planner.database.Database;
+import cs1530.planner.util.Utils;
 
 public class Course {
 	private String name, description;
@@ -13,7 +15,7 @@ public class Course {
 	}
 	
 	public Course(String dataString) {
-		String[] data = dataString.split(";c;");
+		String[] data = dataString.split(Database.COURSE_DELIM);
 		if(data.length >= 1)
 			name = data[0];
 		if(data.length == 3) {
@@ -48,6 +50,6 @@ public class Course {
 	
 	@Override
 	public String toString() {
-		return name + ";c;" + description + ";c;" + timetable;
+		return Utils.toFileString(Database.COURSE_DELIM, name, description, timetable);
 	}
 }

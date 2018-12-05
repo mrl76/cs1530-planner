@@ -13,75 +13,48 @@ public class ExamTest {
     
     //Test full constructor
     @Test
-    public void testFullConstructor()
-    {
+    public void testFullConstructor() {
         Date testDate = new Date();
         Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
-        
+        Course testCourse = new Course("testName", "testDescription", testTimetable);
+        Exam testA = new Exam("testA","testDescription",testDate, "testCourse");
+
         assertTrue(testA.getName().equals("testA"));
-        assertTrue(testA.getDescription().equals("Hello"));
-        assertSame(testA.getCourse(),testCourse);
-        assertSame(testA.getDate(),testDate);
+        assertTrue(testA.getDescription().equals("testDescription"));
+        assertSame(testA.getCourse(), "testCourse");
+        assertSame(testA.getDate(), testDate);
     }
-    
-    
-    //Test constructor with only name and course
+
     @Test
-    public void testNameCourseConstructor()
+    public void testDatastringConstructor()
     {
-        Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA",testCourse);
-        
-        assertTrue(testA.getName().equals("testA"));
-        assertTrue(testA.getDescription().equals(""));
-        assertSame(testA.getCourse(),testCourse);
+        String datastring = "testName;e;testDescription;e;0;e;testCourse";
+        Exam testA = new Exam(datastring);
+        assertTrue(testA.getName().equals("testName"));
+        assertTrue(testA.getDescription().equals("testDescription"));
+        assertTrue(testA.getCourse().equals("testCourse"));
+        assertTrue(testA.getDate().compareTo(new Date(0)) == 0);
     }
-    
-    //Test constructor with only name
-    @Test
-    public void testNameConstructor()
-    {
-        Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA");
-        
-        assertTrue(testA.getName().equals("testA"));
-        assertTrue(testA.getDescription().equals(""));
-    }
-    
     
     //Test accessors and mutators
     @Test
     public void testGetCourse()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
-        
-        assertSame(testA.getCourse(),testCourse);
+        Exam testA = new Exam("testA","testDescription",testDate, "testCourse");
+
+        assertTrue(testA.getCourse().equals("testCourse"));
     }
     
     @Test
     public void testSetCourse()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
-        
-        assertSame(testA.getCourse(),testCourse);
-        
-        Date testDate2 = new Date();
-        Timetable testTimetable2 = new Timetable(testDate2);
-        Course testCourse2 = new Course("testName2", "testDescription2",testTimetable2);
-        testA.setCourse(testCourse2);
-        assertSame(testA.getCourse(),testCourse2);
+        Exam testA = new Exam("testA","testDescription",testDate, "testCourse");
+
+        assertTrue(testA.getCourse().equals("testCourse"));
+        testA.setCourse("testCourse2");
+        assertTrue(testA.getCourse().equals("testCourse2"));
         
     }
     
@@ -89,9 +62,7 @@ public class ExamTest {
     public void testGetName()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA",testCourse);
+        Exam testA = new Exam("testA","testDescription",testDate, "testCourse");
         
         assertTrue(testA.getName().equals("testA"));
     }
@@ -100,10 +71,7 @@ public class ExamTest {
     public void testSetName()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA",testCourse);
-        
+        Exam testA = new Exam("testA","testDescription",testDate, "testCourse");
         assertTrue(testA.getName().equals("testA"));
         testA.setName("newName");
         assertTrue(testA.getName().equals("newName"));
@@ -113,9 +81,7 @@ public class ExamTest {
     public void testGetDescription()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
+        Exam testA = new Exam("testA","Hello",testDate,"testCourse");
         assertTrue(testA.getDescription().equals("Hello"));
     }
     
@@ -124,9 +90,7 @@ public class ExamTest {
     public void testSetDescription()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
+        Exam testA = new Exam("testA","Hello",testDate,"testCourse");
         
         
         testA.setDescription("NewDescription");
@@ -138,9 +102,7 @@ public class ExamTest {
     public void testGetDate()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
+        Exam testA = new Exam("testA","Hello",testDate,"testCourse");
         
         assertSame(testA.getDate(),testDate);
     }
@@ -149,9 +111,7 @@ public class ExamTest {
     public void testSetDate()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
+        Exam testA = new Exam("testA","Hello",testDate,"testCourse");
         
         assertSame(testA.getDate(),testDate);
         

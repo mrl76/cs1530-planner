@@ -21,19 +21,16 @@ public class CalendarTest {
     @Test
     public void testConstructor()
     {
-        Calendar testC = new Calendar();
-        Class courseType = testC.getCourses().getClass();
-        Class eventType = testC.getEvents().getClass();
-        Class alarmType = testC.getAlarms().getClass();
-        assertTrue(courseType.getName().equals("java.util.HashSet"));
-        assertTrue(eventType.getName().equals("java.util.TreeSet"));
-        assertTrue(alarmType.getName().equals("java.util.TreeSet"));
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
+        assertNotNull(testC);
     }
     
     @Test
     public void testGetCourses()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Class courseType = testC.getCourses().getClass();
         assertTrue(courseType.getName().equals("java.util.HashSet"));
     }
@@ -42,7 +39,8 @@ public class CalendarTest {
     @Test
     public void testAddCourse()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Date testDate = new Date();
         Timetable testTimetable = new Timetable(testDate);
         Course testCourse = new Course("testName", "testDescription",testTimetable);
@@ -54,7 +52,8 @@ public class CalendarTest {
     @Test
     public void testRemoveCourses()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Date testDate = new Date();
         Timetable testTimetable = new Timetable(testDate);
         Course testCourse = new Course("testName", "testDescription",testTimetable);
@@ -67,7 +66,8 @@ public class CalendarTest {
     @Test
     public void testGetEvents()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Class eventType = testC.getEvents().getClass();
         assertTrue(eventType.getName().equals("java.util.TreeSet"));
     }
@@ -76,7 +76,8 @@ public class CalendarTest {
     @Test
     public void testGetAlarms()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Class alarmsType = testC.getAlarms().getClass();
         assertTrue(alarmsType.getName().equals("java.util.TreeSet"));
     }
@@ -85,21 +86,21 @@ public class CalendarTest {
     @Test
     public void testAddAppointment()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Date testDate = new Date();
         Appointment testAppointment = new Appointment("TEST1","TESTdescription",testDate);
         testC.addAppointment(testAppointment);
         
         assertTrue(testC.getEvents().contains(testAppointment));
-        
-        
     }
     
     
     @Test
     public void testRemoveAppointment()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Date testDate = new Date();
         Appointment testAppointment = new Appointment("TEST1","TESTdescription",testDate);
         testC.addAppointment(testAppointment);
@@ -107,16 +108,25 @@ public class CalendarTest {
         
         assertFalse(testC.getEvents().contains(testAppointment));
     }
-    
+
+    @Test
+    public void testGetAppointements()
+    {
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
+        Date testDate = new Date();
+        Appointment testAppointment = new Appointment("TEST1","TESTdescription",testDate);
+        testC.addAppointment(testAppointment);
+        assertTrue(testC.getAppointments().contains(testAppointment));
+    }
     
     @Test
     public void testResetDate()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Exam testA = new Exam("testA","Hello",testDate,testCourse);
+        Exam testA = new Exam("testA","testDescription",testDate, "testCourse");
         
         Date testDate2 = new Date();
         testC.resetDate(testA, testDate2);
@@ -128,11 +138,10 @@ public class CalendarTest {
     @Test
     public void testResetDateAssginment()
     {
-        Calendar testC = new Calendar();
+        UserProfile testUser = new UserProfile("testName","testPass");
+        Calendar testC = new Calendar(testUser);
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         Date testDate2 = new Date();
         testC.resetDate(testA, testDate2);

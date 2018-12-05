@@ -1,5 +1,6 @@
 package cs1530.planner.calendar.time;
 
+import cs1530.planner.database.Database;
 import cs1530.planner.util.Utils;
 
 import java.util.Calendar;
@@ -27,7 +28,7 @@ public class Timetable {
 	}
 	
 	public Timetable(String dataString) {
-		String[] data = dataString.split(";t;");
+		String[] data = dataString.split(Database.TIMETABLE_DELIM);
 		assert(data.length == 8);
 		this.startDate = new Date(Long.valueOf(data[0]));
 		this.previousDate = new Date(Long.valueOf(data[1]));
@@ -40,7 +41,7 @@ public class Timetable {
 	}
 	
 	public String toString() {
-		return Utils.toFileString(";t;",
+		return Utils.toFileString(Database.TIMETABLE_DELIM,
 				startDate.getTime(),
 				previousDate.getTime(),
 				nextDate == null ? null : nextDate.getTime(),

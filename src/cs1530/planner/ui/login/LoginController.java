@@ -20,12 +20,12 @@ public class LoginController {
 			error.setText("Please fill out username and password.");
 			return;
 		}
-		UserProfile user = Main.getDatabase().createProfile(username.getText(), password.getText());
-		if(user == null) {
+		if(Main.getDatabase().getProfile(username.getText()) != null)
 			error.setText("A profile under that username already exists.");
-			return;
+		else {
+			UserProfile user = Main.getDatabase().createProfile(username.getText(), password.getText());
+			Main.getUIManager().showProfile(user);
 		}
-		Main.getUIManager().showProfile(user);
 	}
 	
 	public void onConfirmClick() {

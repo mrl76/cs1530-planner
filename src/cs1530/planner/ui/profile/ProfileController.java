@@ -2,6 +2,7 @@ package cs1530.planner.ui.profile;
 
 import cs1530.planner.Main;
 import cs1530.planner.calendar.UserProfile;
+import cs1530.planner.calendar.event.Appointment;
 import cs1530.planner.calendar.event.EventType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,11 +19,11 @@ public class ProfileController {
 	private UserProfile profile;
 	
 	@FXML private void initialize() {
-		ObservableList<String> choices = FXCollections.observableArrayList("Appointment", "Assignment", "Exam");
+		ObservableList<String> choices = FXCollections.observableArrayList("Appointment", "Assignment", "Exam", "Course");
 		addBox.setItems(choices);
 		addBox.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> {
-					if((oldValue == null || oldValue.isEmpty()) && newValue != null && !newValue.isEmpty())
+					if(newValue != null && !newValue.isEmpty())
 						onAdd();
 				}
 		);
@@ -34,14 +35,20 @@ public class ProfileController {
 		refreshDisplay();
 	}
 	
-	public void onAdd() {
+	private void onAdd() {
 		if(addBox.getValue() != null) {
-			Main.getUIManager().showNewEvent(profile, EventType.valueOf(addBox.getValue().toUpperCase()));
+			EventType type = EventType.valueOf(addBox.getValue().toUpperCase());
+			if(type == EventType.COURSE)
+				Main.getUIManager().showNewCourse(profile);
+			else
+				Main.getUIManager().showNewEvent(profile, type);
 			refreshDisplay();
 		}
 	}
 	
-	private void refreshDisplay() {
-		//TODO create display
+	public void refreshDisplay() {
+		eventBox.getChildren().clear();
+		for(Appointment event : profile.getCalendar().getEvents())
+			eventBox.getChildren().add(Main.getUIManager().getEventPane(profile, event));
 	}
 }

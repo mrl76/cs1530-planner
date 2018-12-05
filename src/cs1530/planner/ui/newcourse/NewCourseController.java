@@ -4,10 +4,12 @@ import cs1530.planner.calendar.Course;
 import cs1530.planner.calendar.UserProfile;
 import cs1530.planner.calendar.time.Interval;
 import cs1530.planner.calendar.time.Timetable;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -61,5 +63,6 @@ public class NewCourseController {
 		Timetable t = new Timetable(startDate, startDate, null, startDate, repeatBox.isSelected(), intervalSize, interval, false);
 		Course r = new Course(courseName, courseDesc, t);
 		profile.getCalendar().addCourse(r);
+		Platform.runLater(() -> ((Stage) name.getScene().getWindow()).close());
 	}
 }

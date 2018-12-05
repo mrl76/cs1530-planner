@@ -7,6 +7,7 @@ import java.util.Date;
 public class Alarm implements Comparable<Alarm> {
 	private Timetable timetable;
 	private int minutesWarning;
+	private boolean enabled;
 	
 	public Alarm(Timetable timetable) {
 		this(timetable, 0);
@@ -31,6 +32,14 @@ public class Alarm implements Comparable<Alarm> {
 	
 	public void setMinutesWarning(int minutesWarning) {
 		this.minutesWarning = minutesWarning;
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	@Override

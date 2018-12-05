@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="60.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs1530.planner.ui.event.EventController">
    <children>
       <Label fx:id="nameLabel" text="Event Name" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
@@ -16,9 +15,9 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="alarmButton" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-padding: 5;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button fx:id="alarmButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAlarmClick" style="-fx-padding: 5;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="alarmStatus" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../util/bell.png" />
                </image>

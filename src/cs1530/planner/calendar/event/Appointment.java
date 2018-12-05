@@ -1,12 +1,15 @@
 package cs1530.planner.calendar.event;
 
+import cs1530.planner.calendar.Alarm;
+import cs1530.planner.database.Database;
 import cs1530.planner.util.Utils;
 
 import java.util.Date;
 
 public class Appointment implements Comparable<Appointment> {
-	private String name, description;
-	private Date date;
+	protected String name, description;
+	protected Date date;
+	protected Alarm alarm = null;
 	
 	public Appointment(String name, String description, Date date) {
 		this.name = name;
@@ -14,8 +17,13 @@ public class Appointment implements Comparable<Appointment> {
 		this.date = date;
 	}
 	
-	public Appointment(String name) {
-		this(name, "", Utils.now());
+	public Appointment(String dataString) {
+		String[] data = dataString.split(Database.APPOINT_DELIM);
+		if(data.length == 3) {
+			name = data[0];
+			description = data[1];
+			date = new Date(Long.valueOf(data[2]));
+		}
 	}
 	
 	public String getName() {
@@ -42,8 +50,22 @@ public class Appointment implements Comparable<Appointment> {
 		this.date = date;
 	}
 	
+	public Alarm getAlarm() {
+		return alarm;
+	}
+	
+	public void setAlarm(Alarm alarm) {
+		this.alarm = alarm;
+		this.alarm.setEnabled(true);
+	}
+	
 	@Override
 	public int compareTo(Appointment o) {
-		return (int) (o.date.getTime() - date.getTime());
+		return (int) (date.getTime() - o.date.getTime());
+	}
+	
+	@Override
+	public String toString() {
+		return Utils.toFileString(Database.APPOINT_DELIM, name, description, date.getTime());
 	}
 }

@@ -3,6 +3,7 @@ package cs1530.planner;
 import cs1530.planner.database.Database;
 import cs1530.planner.ui.UIManager;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -28,7 +29,7 @@ public class Main extends Application {
 		stage = primaryStage;
 		stage.setOnCloseRequest((event) -> {
 			database.save();
-			System.exit(0);
+			Platform.exit();
 		});
 		uiManager.showLogin();
 		stage.show();

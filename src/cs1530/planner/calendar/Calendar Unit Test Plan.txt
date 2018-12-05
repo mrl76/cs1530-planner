@@ -661,7 +661,7 @@ public int hashCode()
    POSTCONDITIONS:  This method should return a hash that represents the UserProfile that called the method
 
 ----------------------------------------------------------------------------------------------------
-Alarm.java(12/3/2018)
+Alarm.java(12/4/2018)
 
 Methods:
 public Alarm(Timetable timetable)
@@ -709,28 +709,26 @@ public int compareTo(Alarm o)
                     passed into the method
 
 5) IDENTIFIER:      case-alarm-get-minute-warning
-   DESCRIPTION:     This test verifies that the getMinuteWarning method of the Alarm class will return the
+   DESCRIPTION:     This test verifies that the getMinuteWarning() method of the Alarm class will return the
                     stored minutesWarning variable
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Alarm class
-   POSTCONDITIONS:  The setTimetable() method should change the stored Timetable object to the Timetable
-                    passed into the method
+   POSTCONDITIONS:  The getMinuteWarning() method should return teh stored value of the minutesWarning variable
 
 6) IDENTIFIER:      case-alarm-set-minute-warning
-   DESCRIPTION:     This test verifies that the setTimetable() method of the Alarm class will change
-                    the Timetable that is stored in the Alarm object to the Timetable that is passed into
+   DESCRIPTION:     This test verifies that the setMinuteWarning() method of the Alarm class will change
+                    the minuteWarning that is stored in the Alarm object to the integer that is passed into
                     the method
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Alarm class
-   POSTCONDITIONS:  The setTimetable() method should change the stored Timetable object to the Timetable
+   POSTCONDITIONS:  The setMinuteWarning() method should change the stored minuteWarning object to the integer
                     passed into the method
 
 7) IDENTIFIER:      case-alarm-compare-to-greater
-   DESCRIPTION:     This test verifies that the setTimetable() method of the Alarm class will change
-                    the Timetable that is stored in the Alarm object to the Timetable that is passed into
-                    the method
+   DESCRIPTION:     This test verifies that the compareTo method will return a value greater than 0 when the passed in
+                    alarm occurs before the current Alarm
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Alarm class
@@ -738,9 +736,8 @@ public int compareTo(Alarm o)
                     passed into the method
 
 8) IDENTIFIER:      case-alarm-compare-to-less
-   DESCRIPTION:     This test verifies that the setTimetable() method of the Alarm class will change
-                    the Timetable that is stored in the Alarm object to the Timetable that is passed into
-                    the method
+   DESCRIPTION:     This test verifies that the compareTo method will return a value less than 0 when the passed in
+                    alarm occurs after the current Alarm
    PRECONDITIONS:   This test will be part of automated unit testing all setup will be
                     handled with the test program
    EXECUTION STEPS: This test will run in the unit test program for the Alarm class

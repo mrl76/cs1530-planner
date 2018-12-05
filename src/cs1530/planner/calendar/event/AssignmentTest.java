@@ -17,13 +17,11 @@ public class AssignmentTest {
     public void testFullConstructor()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         assertTrue(testA.getName().equals("testA"));
         assertTrue(testA.getDescription().equals("Hello"));
-        assertSame(testA.getCourse(),testCourse);
+        assertTrue(testA.getCourse().equals("testCourse"));
         assertSame(testA.getDate(),testDate);
     }
     
@@ -33,13 +31,11 @@ public class AssignmentTest {
     public void testNameCourseConstructor()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA",testCourse);
+        Assignment testA = new Assignment("testA","testDescription", testDate,"testCourse");
         
         assertTrue(testA.getName().equals("testA"));
-        assertTrue(testA.getDescription().equals(""));
-        assertSame(testA.getCourse(),testCourse);
+        assertTrue(testA.getDescription().equals("testDescription"));
+        assertTrue(testA.getCourse().equals("testCourse"));
     }
     
     //Test constructor with only name
@@ -47,12 +43,10 @@ public class AssignmentTest {
     public void testNameConstructor()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA");
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         assertTrue(testA.getName().equals("testA"));
-        assertTrue(testA.getDescription().equals(""));
+        assertTrue(testA.getDescription().equals("Hello"));
     }
     
     
@@ -61,28 +55,19 @@ public class AssignmentTest {
     public void testGetCourse()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
-        assertSame(testA.getCourse(),testCourse);
+        assertTrue(testA.getCourse().equals("testCourse"));
     }
     
     @Test
     public void testSetCourse()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
-        
-        assertSame(testA.getCourse(),testCourse);
-        
-        Date testDate2 = new Date();
-        Timetable testTimetable2 = new Timetable(testDate2);
-        Course testCourse2 = new Course("testName2", "testDescription2",testTimetable2);
-        testA.setCourse(testCourse2);
-        assertSame(testA.getCourse(),testCourse2);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
+        assertTrue(testA.getCourse().equals("testCourse"));
+        testA.setCourse("testCourse2");
+        assertTrue(testA.getCourse().equals("testCourse2"));
 
     }
     
@@ -90,9 +75,7 @@ public class AssignmentTest {
     public void testGetName()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA",testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         assertTrue(testA.getName().equals("testA"));
     }
@@ -101,9 +84,7 @@ public class AssignmentTest {
     public void testSetName()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA",testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         assertTrue(testA.getName().equals("testA"));
         testA.setName("newName");
@@ -114,9 +95,7 @@ public class AssignmentTest {
     public void testGetDescription()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         assertTrue(testA.getDescription().equals("Hello"));
     }
     
@@ -125,9 +104,7 @@ public class AssignmentTest {
     public void testSetDescription()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         
         testA.setDescription("NewDescription");
@@ -139,9 +116,7 @@ public class AssignmentTest {
     public void testGetDate()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         assertSame(testA.getDate(),testDate);
     }
@@ -150,9 +125,7 @@ public class AssignmentTest {
     public void testSetDate()
     {
         Date testDate = new Date();
-        Timetable testTimetable = new Timetable(testDate);
-        Course testCourse = new Course("testName", "testDescription",testTimetable);
-        Assignment testA = new Assignment("testA","Hello",testDate,testCourse);
+        Assignment testA = new Assignment("testA","Hello",testDate,"testCourse");
         
         assertSame(testA.getDate(),testDate);
         
