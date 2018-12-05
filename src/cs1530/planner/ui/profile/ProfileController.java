@@ -46,9 +46,9 @@ public class ProfileController {
 		}
 	}
 	
-	private void refreshDisplay() {
+	public void refreshDisplay() {
 		eventBox.getChildren().clear();
 		for(Appointment event : profile.getCalendar().getEvents())
-			eventBox.getChildren().add(Main.getUIManager().getEventPane(event));
+			eventBox.getChildren().add(Main.getUIManager().getEventPane(profile, event));
 	}
 }

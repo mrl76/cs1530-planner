@@ -34,7 +34,12 @@
       </HBox>
       <Label fx:id="error" />
       <TextArea fx:id="description" prefHeight="200.0" prefWidth="200.0" promptText="Description" />
-      <Button fx:id="confirm" mnemonicParsing="false" onAction="#onConfirm" text="Confirm" />
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Button fx:id="confirm" mnemonicParsing="false" onAction="#onConfirm" text="Confirm" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
+         </children>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

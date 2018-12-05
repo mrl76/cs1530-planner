@@ -1,5 +1,6 @@
 package cs1530.planner.ui.newevent;
 
+import cs1530.planner.Main;
 import cs1530.planner.calendar.UserProfile;
 import cs1530.planner.calendar.event.Appointment;
 import cs1530.planner.calendar.event.Assignment;
@@ -9,10 +10,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.Instant;
@@ -27,9 +25,11 @@ public class NewEventController {
 	@FXML private ComboBox<Integer> hour, minute;
 	@FXML private ComboBox<String> meridian;
 	@FXML private TextArea description;
+	@FXML private Button deleteButton;
 	
 	private UserProfile profile;
 	private EventType type;
+	private Appointment event = null;
 	
 	@FXML private void initialize() {
 		ObservableList<Integer> hours = FXCollections.observableArrayList();
@@ -47,6 +47,25 @@ public class NewEventController {
 		this.type = type;
 		if(type == EventType.APPOINTMENT)
 			course.setDisable(true);
+		deleteButton.setDisable(true);
+	}
+	
+	public void init(UserProfile profile, Appointment event) {
+		this.profile = profile;
+		this.type = EventType.getType(event);
+		this.event = event;
+		name.setText(event.getName());
+		if(event instanceof Assignment)
+			course.setText(((Assignment) event).getCourse());
+		if(event instanceof Exam)
+			course.setText(((Exam) event).getCourse());
+		date.setValue(event.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+		Calendar c = Calendar.getInstance();
+		c.setTime(event.getDate());
+		hour.getSelectionModel().select((c.get(Calendar.HOUR) + 11) % 12);
+		minute.getSelectionModel().select(c.get(Calendar.MINUTE));
+		meridian.getSelectionModel().select(c.get(Calendar.AM_PM));
+		description.setText(event.getDescription());
 	}
 	
 	public void onConfirm() {
@@ -60,21 +79,48 @@ public class NewEventController {
 		c.setTime(eventDate);
 		c.set(Calendar.HOUR, eventHour % 12);
 		c.set(Calendar.MINUTE, eventMinute);
-		c.set(Calendar.AM_PM, eventMer.equals("AM") ? Calendar.AM : Calendar.PM);
+		c.set(Calendar.AM_PM, eventMer.equals("PM") ? Calendar.PM : Calendar.AM);
 		
-		Appointment a;
-		if(type == EventType.APPOINTMENT) {
-			a = new Appointment(eventName, eventDesc, c.getTime());
-			profile.getCalendar().addAppointment(a);
+		if(event == null) {
+			Appointment a;
+			if (type == EventType.APPOINTMENT) {
+				a = new Appointment(eventName, eventDesc, c.getTime());
+				profile.getCalendar().addAppointment(a);
+			} else if (type == EventType.ASSIGNMENT) {
+				a = new Assignment(eventName, eventDesc, eventDate, course.getText());
+				profile.getCalendar().addAppointment(a);
+			} else if (type == EventType.EXAM) {
+				a = new Exam(eventName, eventDesc, eventDate, course.getText());
+				profile.getCalendar().addAppointment(a);
+			}
 		}
-		else if(type == EventType.ASSIGNMENT) {
-			a = new Assignment(eventName, eventDesc, eventDate, null);
-			profile.getCalendar().addAppointment(a);
+		else {
+			event.setName(eventName);
+			if(event instanceof Assignment)
+				((Assignment) event).setCourse(course.getText());
+			if(event instanceof Exam)
+				((Exam) event).setCourse(course.getText());
+			event.setDate(eventDate);
+			event.setDescription(eventDesc);
+			switch(EventType.getType(event)) {
+			case ASSIGNMENT:
+				profile.saveAssignments();
+				break;
+			case EXAM:
+				profile.saveExams();
+				break;
+			default:
+				profile.saveAppointments();
+				break;
+			}
 		}
-		else if(type == EventType.EXAM) {
-			a = new Exam(eventName, eventDesc, eventDate, null);
-			profile.getCalendar().addAppointment(a);
-		}
+		Main.getUIManager().refreshCurrentProfile();
+		Platform.runLater(() -> ((Stage) name.getScene().getWindow()).close());
+	}
+	
+	public void onDelete() {
+		profile.getCalendar().removeAppointment(event);
+		Main.getUIManager().refreshCurrentProfile();
 		Platform.runLater(() -> ((Stage) name.getScene().getWindow()).close());
 	}
 }

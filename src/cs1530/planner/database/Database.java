@@ -61,8 +61,10 @@ public class Database {
 				try {
 					scanner = new Scanner(f);
 					if (f.getName().equals("config")) {
-						if (scanner.hasNextLine())
-							next = new UserProfile(profileDir.getName().replaceFirst("profile_", scanner.nextLine()));
+						if (scanner.hasNextLine()) {
+							next = new UserProfile(profileDir.getName().replaceFirst("profile_", ""), scanner.nextLine());
+							profiles.put(next.getUsername(), next);
+						}
 					}
 				} catch(IOException ex) {
 					ex.printStackTrace();
@@ -117,8 +119,9 @@ public class Database {
 	}
 	
 	public UserProfile createProfile(String username, String password) {
-		if (profiles.containsKey(username))
+		if (profiles.containsKey(username)) {
 			return null;
+		}
 		UserProfile user = new UserProfile(username, password);
 		profiles.put(username, user);
 		saveProfile(user);

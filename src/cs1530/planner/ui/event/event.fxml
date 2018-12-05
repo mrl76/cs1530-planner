@@ -17,7 +17,7 @@
       </Label>
       <Button fx:id="alarmButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAlarmClick" style="-fx-padding: 5;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="alarmStatus" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../util/bell.png" />
                </image>

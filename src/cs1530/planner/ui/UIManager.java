@@ -8,6 +8,7 @@ import cs1530.planner.ui.event.EventController;
 import cs1530.planner.ui.newcourse.NewCourseController;
 import cs1530.planner.ui.newevent.NewEventController;
 import cs1530.planner.ui.profile.ProfileController;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -15,12 +16,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class UIManager {
-	public static final Image BELL = new Image("util/bell.png");
-	public static final Image BELL_OFF = new Image("util/bell_off.png");
+	public static Image BELL, BELL_OFF;
 	
 	private static final String LOGIN = "login/login.fxml";
 	private static final String PROFILE = "profile/profile.fxml";
@@ -28,21 +26,21 @@ public class UIManager {
 	private static final String NEWCOURSE = "newcourse/newcourse.fxml";
 	private static final String EVENT = "event/event.fxml";
 	
-	private Map<Pane, FXMLLoader> loaders;
+	private ProfileController currentController;
 	
 	public UIManager() {
-		this.loaders = new HashMap<>();
-	}
-	
-	public FXMLLoader getLoader(Pane pane) {
-		return loaders.get(pane);
+		try {
+			BELL = new Image(Main.getResource("util/bell.png").openStream());
+			BELL_OFF = new Image(Main.getResource("util/bell_off.png").openStream());
+		} catch(IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	public void showLogin() {
 		try {
 			FXMLLoader l = new FXMLLoader(getClass().getResource(LOGIN));
 			Pane p = l.load();
-			loaders.put(p, l);
 			Scene s = new Scene(p);
 			Main.setScene(s, "Login");
 		} catch(IOException ex) {
@@ -53,12 +51,14 @@ public class UIManager {
 	public void showProfile(UserProfile profile) {
 		try {
 			FXMLLoader l = new FXMLLoader(getClass().getResource(PROFILE));
-			ProfileController c = l.getController();
-			c.init(profile);
+			Platform.runLater(() -> {
+				ProfileController c = l.getController();
+				c.init(profile);
+				currentController = c;
+			});
 			Pane p = l.load();
-			loaders.put(p, l);
 			Scene s = new Scene(p);
-			Main.setScene(s, profile.getUsername() + ": Calendar");
+			Main.setScene(s, "Planner");
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		}
@@ -67,15 +67,15 @@ public class UIManager {
 	public void showNewEvent(UserProfile profile, EventType type) {
 		try {
 			FXMLLoader l = new FXMLLoader(getClass().getResource(NEWEVENT));
-			NewEventController c = l.getController();
-			c.init(profile, type);
+			Platform.runLater(() -> {
+				NewEventController c = l.getController();
+				c.init(profile, type);
+			});
 			Pane p = l.load();
-			loaders.put(p, l);
 			Scene s = new Scene(p);
 			Stage g = new Stage();
 			g.setTitle("Add New Event");
 			g.setScene(s);
-			g.setOnCloseRequest((event) -> loaders.remove(p));
 			g.showAndWait();
 		} catch(IOException ex) {
 			ex.printStackTrace();
@@ -85,30 +85,56 @@ public class UIManager {
 	public void showNewCourse(UserProfile profile) {
 		try {
 			FXMLLoader l = new FXMLLoader(getClass().getResource(NEWCOURSE));
-			NewCourseController c = l.getController();
-			c.init(profile);
+			Platform.runLater(() -> {
+				NewCourseController c = l.getController();
+				c.init(profile);
+			});
 			Pane p = l.load();
-			loaders.put(p, l);
 			Scene s = new Scene(p);
 			Stage g = new Stage();
 			g.setTitle("Add New Course");
 			g.setScene(s);
-			g.setOnCloseRequest((event) -> loaders.remove(p));
 			g.showAndWait();
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		}
 	}
 	
-	public Pane getEventPane(Appointment event) {
+	public Pane getEventPane(UserProfile profile, Appointment event) {
 		try {
 			FXMLLoader l = new FXMLLoader(getClass().getResource(EVENT));
-			EventController c = l.getController();
-			c.init(event);
-			return l.load();
+			Platform.runLater(() -> {
+				EventController c = l.getController();
+				c.init(event);
+			});
+			Pane p = l.load();
+			p.setOnMouseClicked((mouseEvent) -> {
+				if(mouseEvent.getClickCount() == 2) {
+					try {
+						FXMLLoader l2 = new FXMLLoader(getClass().getResource(NEWEVENT));
+						Platform.runLater(() -> {
+							NewEventController c = l2.getController();
+							c.init(profile, event);
+						});
+						Pane p2 = l2.load();
+						Scene s = new Scene(p2);
+						Stage g = new Stage();
+						g.setTitle("Edit Event");
+						g.setScene(s);
+						g.showAndWait();
+					} catch(IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+			});
+			return p;
 		} catch(IOException ex) {
 			ex.printStackTrace();
 			return null;
 		}
+	}
+	
+	public void refreshCurrentProfile() {
+		currentController.refreshDisplay();
 	}
 }

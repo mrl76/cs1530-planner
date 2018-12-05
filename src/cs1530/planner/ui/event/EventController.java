@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 public class EventController {
 	@FXML private Label nameLabel, dateLabel, courseLabel;
 	@FXML private Button alarmButton;
+	@FXML private ImageView alarmStatus;
 	
 	private Appointment event;
 	
@@ -25,17 +26,20 @@ public class EventController {
 			courseLabel.setText(((Assignment) event).getCourse());
 		else if(event instanceof Exam)
 			courseLabel.setText(((Exam) event).getCourse());
+		else
+			courseLabel.setText("");
+		alarmButton.setDisable(event.getAlarm() == null);
 	}
 	
 	public void onAlarmClick() {
 		if(event.getAlarm() != null) {
 			if(event.getAlarm().isEnabled()) {
 				event.getAlarm().setEnabled(false);
-				alarmButton.setGraphic(new ImageView(UIManager.BELL_OFF));
+				alarmStatus.setImage(UIManager.BELL_OFF);
 			}
 			else {
 				event.getAlarm().setEnabled(true);
-				alarmButton.setGraphic(new ImageView(UIManager.BELL));
+				alarmStatus.setImage(UIManager.BELL);
 			}
 		}
 	}
